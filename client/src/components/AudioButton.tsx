@@ -29,16 +29,12 @@ const AudioButton = ({
   label = 'Listen',
   className = ''
 }: AudioButtonProps) => {
-  // Only using the isPlaying state from our component, not from useAudio
-  const [isPlaying, setIsPlaying] = useState(false);
-  const { play } = useAudio(src);
+  // Use isPlaying state directly from useAudio hook
+  const { play, isPlaying } = useAudio(src);
   
   const handlePlay = useCallback(() => {
-    setIsPlaying(true);
-    play(() => {
-      setIsPlaying(false);
-    });
-  }, [play, setIsPlaying]);
+    play();
+  }, [play]);
   
   return (
     <button

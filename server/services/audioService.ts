@@ -121,8 +121,14 @@ export const audioService = {
       throw new Error(`Invalid sentence ID: ${id}`);
     }
     
-    // Generate a unique tone for each sentence
-    return generateWordTone(id);
+    // For sentences, generate a more distinctive sound
+    // using a different base frequency and duration
+    const hash = id.split('').reduce((acc, char) => {
+      return acc + char.charCodeAt(0);
+    }, 0);
+    
+    const frequency = 350 + (hash % 200);  // Range: 350-550Hz
+    return generateAudioTone(frequency, 1.2);  // Longer duration for sentences
   },
   
   /**
