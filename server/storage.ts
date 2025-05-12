@@ -305,6 +305,15 @@ export class MemStorage implements IStorage {
         path: '/objects'
       },
       {
+        id: 'resources',
+        title: 'Community Resources',
+        description: 'Essential services in Bremerton and Kitsap County',
+        progress: 0,
+        imageUrl: 'https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
+        status: 'in-progress',
+        path: '/resources'
+      },
+      {
         id: 'health',
         title: 'Health',
         description: 'Learn health and medical terms',
