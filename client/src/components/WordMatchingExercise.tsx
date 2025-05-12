@@ -124,13 +124,17 @@ const WordMatchingExercise = ({
       {/* Words grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {shuffledWords.map((item) => (
-          <button 
+          <div 
             key={`word-${item.id}`}
-            className={`p-4 rounded-lg text-center font-bold text-lg ${getItemBgClass(item.id)} transition-all`}
-            onClick={() => handleWordClick(item.id)}
-            disabled={completedPairs.has(item.id)}
+            className={`p-4 rounded-lg text-center ${getItemBgClass(item.id)} transition-all`}
           >
-            {item.word}
+            <div 
+              className="font-bold text-lg mb-2 cursor-pointer" 
+              onClick={() => handleWordClick(item.id)}
+              aria-disabled={completedPairs.has(item.id)}
+            >
+              {item.word}
+            </div>
             <div className="mt-2">
               <AudioButton 
                 src={item.audioUrl} 
@@ -138,7 +142,7 @@ const WordMatchingExercise = ({
                 label="" 
               />
             </div>
-          </button>
+          </div>
         ))}
       </div>
     </div>
