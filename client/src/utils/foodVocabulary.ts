@@ -33,7 +33,7 @@ export const foodVocabulary: FoodItem[] = [
   {
     id: 'food5',
     word: 'Rice',
-    imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e8ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200',
+    imageUrl: 'https://images.unsplash.com/photo-1614961233913-a5113a4a34ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200',
     audioUrl: '/api/audio/word/rice'
   },
   {
