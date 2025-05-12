@@ -1,13 +1,53 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { objectCategories, getObjectsByCategory, ObjectCategory, ObjectItem } from '@/utils/everydayObjects';
 import AudioButton from '@/components/AudioButton';
 import WordMatchingExercise from '@/components/WordMatchingExercise';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { getQueryFn, apiRequest, queryClient } from '@/lib/queryClient';
 
 const EverydayObjectsModule = () => {
   const [selectedCategory, setSelectedCategory] = useState<ObjectCategory | null>(null);
   const [selectedObject, setSelectedObject] = useState<ObjectItem | null>(null);
   const [showExercise, setShowExercise] = useState(false);
+  
+  // Fetch objects progress from the backend
+  const { data: progressData, isLoading } = useQuery({
+    queryKey: ['/api/progress/objects'],
+    queryFn: getQueryFn({ on401: 'throw' }),
+  });
+  
+  // Get completed objects status
+  const getObjectCompletedStatus = (objectId: string): boolean => {
+    if (!progressData || !progressData.categories) return false;
+    
+    const categories = progressData.categories;
+    for (const categoryKey in categories) {
+      const category = categories[categoryKey];
+      if (category && category.items) {
+        const item = category.items.find((item: any) => item.id === objectId);
+        if (item) {
+          return item.completed;
+        }
+      }
+    }
+    return false;
+  };
+  
+  // Update object progress mutation
+  const updateProgress = useMutation({
+    mutationFn: async (objectId: string) => {
+      return apiRequest('/api/progress/objects', 'POST', {
+        objectId,
+        completed: true
+      });
+    },
+    onSuccess: () => {
+      // Invalidate the progress query to refetch the latest data
+      queryClient.invalidateQueries({ queryKey: ['/api/progress/objects'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/modules'] });
+    }
+  });
 
   // Reset selections when going back to categories
   const resetToCategories = () => {
@@ -29,9 +69,25 @@ const EverydayObjectsModule = () => {
   };
 
   // Handle exercise completion
-  const handleExerciseComplete = (score: number) => {
-    // In a real app, this would save progress to the backend
-    console.log(`Exercise completed with score: ${score}`);
+  const handleExerciseComplete = async (score: number) => {
+    if (selectedCategory && score > 0) {
+      // Mark all objects in this category as completed
+      const objects = getObjectsByCategory(selectedCategory.id);
+      
+      try {
+        // Update progress for each object
+        await Promise.all(
+          objects.map(async (obj) => {
+            if (!getObjectCompletedStatus(obj.id)) {
+              await updateProgress.mutateAsync(obj.id);
+            }
+          })
+        );
+      } catch (error) {
+        console.error("Failed to update progress:", error);
+      }
+    }
+    
     setShowExercise(false);
   };
 
@@ -106,15 +162,24 @@ const EverydayObjectsModule = () => {
                   size="lg"
                   label="Listen"
                 />
-                <button 
-                  className="bg-primary text-white font-bold py-2 px-4 rounded-md hover:bg-primary/90"
-                  onClick={() => {
-                    // In a real app, this would track pronunciation practice
-                    console.log('Practice pronunciation');
-                  }}
-                >
-                  Practice Saying It
-                </button>
+                {getObjectCompletedStatus(selectedObject.id) ? (
+                  <div className="flex items-center text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span>Learned</span>
+                  </div>
+                ) : (
+                  <button 
+                    className="bg-primary text-white font-bold py-2 px-4 rounded-md hover:bg-primary/90"
+                    onClick={() => {
+                      updateProgress.mutate(selectedObject.id);
+                    }}
+                    disabled={updateProgress.isPending}
+                  >
+                    {updateProgress.isPending ? 'Saving...' : 'Mark as Learned'}
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -159,14 +224,23 @@ const EverydayObjectsModule = () => {
             {objectsInCategory.map(item => (
               <div 
                 key={item.id}
-                className="bg-light rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                className={`bg-light rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105 ${getObjectCompletedStatus(item.id) ? 'ring-2 ring-primary' : ''}`}
                 onClick={() => setSelectedObject(item)}
               >
-                <img 
-                  src={item.imageUrl} 
-                  alt={item.word}
-                  className="w-full h-32 object-cover"
-                />
+                <div className="relative">
+                  <img 
+                    src={item.imageUrl} 
+                    alt={item.word}
+                    className="w-full h-32 object-cover"
+                  />
+                  {getObjectCompletedStatus(item.id) && (
+                    <div className="absolute top-2 right-2 bg-primary text-white rounded-full p-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
                 <div className="p-3 text-center">
                   <h3 className="font-bold">{item.word}</h3>
                 </div>

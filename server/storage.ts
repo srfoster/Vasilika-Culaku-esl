@@ -147,19 +147,22 @@ export class MemStorage implements IStorage {
     const alphabetItems = this.alphabetProgress.get(userId) || [];
     const numbersItems = this.numbersProgress.get(userId) || [];
     const foodItems = this.foodProgress.get(userId) || [];
+    const objectItems = this.objectsProgress.get(userId) || [];
     const practiceItems = this.dailyPractice.get(userId) || [];
     
     const completedAlphabet = alphabetItems.filter(item => item.completed).length;
     const completedNumbers = numbersItems.filter(item => item.completed).length;
     const completedFood = foodItems.filter(item => item.completed).length;
+    const completedObjects = objectItems.filter(item => item.completed).length;
     const completedPractice = practiceItems.filter(item => item.completed).length;
     
     const totalAlphabet = alphabet.length;
     const totalNumbers = numbers.length;
     const totalFood = foodVocabulary.length + 3; // Food items + 3 listening exercises
+    const totalObjects = everydayObjects.length;
     
-    const totalProgress = totalAlphabet + totalNumbers + totalFood;
-    const completedProgress = completedAlphabet + completedNumbers + completedFood + completedPractice;
+    const totalProgress = totalAlphabet + totalNumbers + totalFood + totalObjects;
+    const completedProgress = completedAlphabet + completedNumbers + completedFood + completedObjects + completedPractice;
     
     // Calculate percentage (0-100)
     const progressPercentage = Math.floor((completedProgress / totalProgress) * 100);
@@ -293,12 +296,21 @@ export class MemStorage implements IStorage {
         path: '/food'
       },
       {
+        id: 'objects',
+        title: 'Everyday Objects',
+        description: 'Learn names of common objects around you',
+        progress: objectsProgress,
+        imageUrl: 'https://images.unsplash.com/photo-1593085260707-5377ba37f868?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
+        status: objectsProgress === 100 ? 'completed' : objectsProgress > 0 ? 'in-progress' : 'in-progress',
+        path: '/objects'
+      },
+      {
         id: 'health',
         title: 'Health',
         description: 'Learn health and medical terms',
         progress: 0,
         imageUrl: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
-        status: 'locked',
+        status: (alphabetProgress > 50 && numbersProgress > 50 && foodProgress > 50) ? 'in-progress' : 'locked',
         path: '/health'
       },
       {
@@ -307,17 +319,8 @@ export class MemStorage implements IStorage {
         description: 'Learn how to navigate and ask for directions',
         progress: 0,
         imageUrl: 'https://images.unsplash.com/photo-1569396116180-210c182bedb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
-        status: 'locked',
+        status: (alphabetProgress > 50 && numbersProgress > 50 && foodProgress > 50) ? 'in-progress' : 'locked',
         path: '/directions'
-      },
-      {
-        id: 'objects',
-        title: 'Everyday Objects',
-        description: 'Learn names of common objects around you',
-        progress: objectsProgress,
-        imageUrl: 'https://images.unsplash.com/photo-1593085260707-5377ba37f868?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
-        status: objectsProgress === 100 ? 'completed' : objectsProgress > 0 ? 'in-progress' : 'in-progress',
-        path: '/objects'
       }
     ];
   }
