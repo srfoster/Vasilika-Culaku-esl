@@ -97,7 +97,7 @@ const CountingExercise = ({
         {items.map((index) => (
           <div 
             key={index}
-            className={`cursor-pointer rounded-lg overflow-hidden transition-all ${
+            className={`cursor-pointer rounded-lg overflow-hidden transition-all relative ${
               countedItems.has(index) ? 'ring-4 ring-primary' : ''
             }`}
             onClick={() => handleCountItem(index)}
@@ -108,8 +108,8 @@ const CountingExercise = ({
               className="w-full h-auto"
             />
             {countedItems.has(index) && (
-              <div className="absolute top-0 right-0 bg-primary text-white w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">
-                {Array.from(countedItems).indexOf(index) + 1}
+              <div className="absolute top-1 right-1 bg-primary text-white w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">
+                {[...countedItems].indexOf(index) + 1}
               </div>
             )}
           </div>
