@@ -7,6 +7,7 @@ import {
   insertAlphabetProgressSchema,
   insertNumbersProgressSchema,
   insertFoodProgressSchema,
+  insertObjectsProgressSchema,
   insertDailyPracticeSchema
 } from "@shared/schema";
 import { audioService } from "./services/audioService";
@@ -170,6 +171,45 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }).parse(req.body);
       
       const progress = await storage.updateFoodProgress(user.id, progressData.exercise, progressData.completed);
+      
+      // Award points to the user
+      await storage.addUserPoints(user.id, 5);
+      
+      res.json(progress);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid progress data", errors: error.errors });
+      }
+      res.status(500).json({ message: "Failed to update progress" });
+    }
+  });
+  
+  // Objects progress routes
+  app.get("/api/progress/objects", async (req, res) => {
+    const user = await storage.getCurrentUser();
+    
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    
+    const progress = await storage.getObjectsProgress(user.id);
+    res.json(progress);
+  });
+  
+  app.post("/api/progress/objects", async (req, res) => {
+    try {
+      const user = await storage.getCurrentUser();
+      
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      
+      const progressData = z.object({
+        objectId: z.string(),
+        completed: z.boolean()
+      }).parse(req.body);
+      
+      const progress = await storage.updateObjectsProgress(user.id, progressData.objectId, progressData.completed);
       
       // Award points to the user
       await storage.addUserPoints(user.id, 5);

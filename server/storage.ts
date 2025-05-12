@@ -462,6 +462,67 @@ export class MemStorage implements IStorage {
     return this.getFoodProgress(userId);
   }
   
+  async getObjectsProgress(userId: number): Promise<any> {
+    const items = this.objectsProgress.get(userId) || [];
+    
+    // Group by category
+    const byCategory = everydayObjects.reduce((acc, obj) => {
+      const category = obj.category;
+      
+      if (!acc[category]) {
+        acc[category] = {
+          name: category,
+          items: []
+        };
+      }
+      
+      const progressItem = items.find(item => item.objectId === obj.id);
+      acc[category].items.push({
+        id: obj.id,
+        word: obj.word,
+        imageUrl: obj.imageUrl,
+        completed: progressItem ? progressItem.completed : false
+      });
+      
+      return acc;
+    }, {} as Record<string, any>);
+    
+    // Calculate progress
+    const totalObjects = everydayObjects.length;
+    const completedObjects = items.filter(item => item.completed).length;
+    const progressPercentage = Math.floor((completedObjects / totalObjects) * 100);
+    
+    return {
+      progress: progressPercentage,
+      completedItems: completedObjects,
+      totalItems: totalObjects,
+      categories: byCategory
+    };
+  }
+  
+  async updateObjectsProgress(userId: number, objectId: string, completed: boolean): Promise<any> {
+    let items = this.objectsProgress.get(userId) || [];
+    const itemIndex = items.findIndex(item => item.objectId === objectId);
+    
+    if (itemIndex === -1) {
+      throw new Error("Object progress not found");
+    }
+    
+    items[itemIndex].completed = completed;
+    items[itemIndex].updatedAt = new Date();
+    
+    this.objectsProgress.set(userId, items);
+    
+    // Update user's last module
+    const user = await this.getUser(userId);
+    if (user) {
+      user.lastModule = '/objects';
+      this.users.set(userId, user);
+    }
+    
+    return this.getObjectsProgress(userId);
+  }
+  
   async getDailyPractice(userId: number): Promise<any> {
     const items = this.dailyPractice.get(userId) || [];
     const today = new Date().toISOString().split('T')[0];
