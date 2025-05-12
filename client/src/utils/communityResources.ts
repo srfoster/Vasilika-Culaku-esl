@@ -76,6 +76,15 @@ export const communityResources: ResourceItem[] = [
     category: 'emergency'
   },
   {
+    id: 'emergency-211',
+    title: 'Community Resources - 211',
+    description: 'Call 211 for information about community resources, social services, and assistance programs in Kitsap County.',
+    phoneNumber: '211',
+    imageUrl: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/emergency',
+    category: 'emergency'
+  },
+  {
     id: 'police',
     title: 'Bremerton Police Department',
     description: 'For non-emergency police assistance in Bremerton.',
@@ -132,10 +141,20 @@ export const communityResources: ResourceItem[] = [
   {
     id: 'kitsap-regional-library',
     title: 'Kitsap Regional Library - Bremerton',
-    description: 'Public library providing books, internet access, and educational resources.',
+    description: 'Public library providing free books, internet access, educational resources, and ESL classes. Library cards are free for all Kitsap County residents.',
     phoneNumber: '(360) 377-3955',
     address: '1301 Sylvan Way, Bremerton, WA 98310',
     imageUrl: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/library',
+    category: 'education'
+  },
+  {
+    id: 'downtown-bremerton-library',
+    title: 'Downtown Bremerton Library',
+    description: 'Second library branch in downtown Bremerton with books, computers, free WiFi, and community programs including English conversation groups.',
+    phoneNumber: '(360) 377-3955',
+    address: '612 Fifth Street, Bremerton, WA 98337',
+    imageUrl: 'https://images.unsplash.com/photo-1580537659466-0a9bfa916a54?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/library',
     category: 'education'
   },
@@ -169,6 +188,16 @@ export const communityResources: ResourceItem[] = [
     address: '345 6th Street, Bremerton, WA 98337',
     imageUrl: 'https://images.unsplash.com/photo-1568213816046-0a293e8ba474?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/city-hall',
+    category: 'government'
+  },
+  {
+    id: 'kitsap-county-courthouse',
+    title: 'Kitsap County Courthouse',
+    description: 'Main courthouse for Kitsap County including court services, records, and legal assistance.',
+    phoneNumber: '(360) 337-7140',
+    address: '614 Division St, Port Orchard, WA 98366',
+    imageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/courthouse',
     category: 'government'
   },
   {
