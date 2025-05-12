@@ -40,6 +40,10 @@ export interface IStorage {
   getFoodProgress(userId: number): Promise<any>;
   updateFoodProgress(userId: number, exercise: string, completed: boolean): Promise<any>;
   
+  // Objects progress
+  getObjectsProgress(userId: number): Promise<any>;
+  updateObjectsProgress(userId: number, objectId: string, completed: boolean): Promise<any>;
+  
   // Daily practice
   getDailyPractice(userId: number): Promise<any>;
   completeDailyPractice(userId: number, completed: boolean): Promise<any>;
@@ -51,6 +55,7 @@ export class MemStorage implements IStorage {
   private alphabetProgress: Map<number, AlphabetProgress[]>;
   private numbersProgress: Map<number, NumbersProgress[]>;
   private foodProgress: Map<number, FoodProgress[]>;
+  private objectsProgress: Map<number, ObjectsProgress[]>;
   private dailyPractice: Map<number, DailyPractice[]>;
   currentId: number;
 

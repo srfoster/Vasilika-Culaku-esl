@@ -11,6 +11,7 @@ import NumbersModule from "@/pages/NumbersModule";
 import FoodVocabularyModule from "@/pages/FoodVocabularyModule";
 import HealthModule from "@/pages/HealthModule";
 import DirectionsModule from "@/pages/DirectionsModule";
+import EverydayObjectsModule from "@/pages/EverydayObjectsModule";
 import Practice from "@/pages/Practice";
 import Progress from "@/pages/Progress";
 import Header from "@/components/Header";
@@ -33,6 +34,7 @@ function Router() {
           <Route path="/food" component={FoodVocabularyModule} />
           <Route path="/health" component={HealthModule} />
           <Route path="/directions" component={DirectionsModule} />
+          <Route path="/objects" component={EverydayObjectsModule} />
           <Route path="/practice" component={Practice} />
           <Route path="/progress" component={Progress} />
           <Route component={NotFound} />

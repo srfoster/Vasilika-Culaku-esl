@@ -19,37 +19,37 @@ export const objectCategories: ObjectCategory[] = [
     id: 'bathroom',
     name: 'Bathroom',
     description: 'Items you find in a bathroom',
-    imageUrl: 'https://via.placeholder.com/200?text=Bathroom'
+    imageUrl: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300'
   },
   {
     id: 'kitchen',
     name: 'Kitchen',
     description: 'Items you find in a kitchen',
-    imageUrl: 'https://via.placeholder.com/200?text=Kitchen'
+    imageUrl: 'https://images.unsplash.com/photo-1556911220-bda9f7f9e627?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300'
   },
   {
     id: 'bedroom',
     name: 'Bedroom',
     description: 'Items you find in a bedroom',
-    imageUrl: 'https://via.placeholder.com/200?text=Bedroom'
+    imageUrl: 'https://images.unsplash.com/photo-1560184897-67f4a3f9a7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300'
   },
   {
     id: 'living',
     name: 'Living Room',
     description: 'Items you find in a living room',
-    imageUrl: 'https://via.placeholder.com/200?text=Living+Room'
+    imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300'
   },
   {
     id: 'technology',
     name: 'Technology',
     description: 'Common technology items',
-    imageUrl: 'https://via.placeholder.com/200?text=Technology'
+    imageUrl: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300'
   },
   {
     id: 'transportation',
     name: 'Transportation',
     description: 'Common transportation items',
-    imageUrl: 'https://via.placeholder.com/200?text=Transportation'
+    imageUrl: 'https://images.unsplash.com/photo-1513618520198-1d3536ea2e56?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300'
   }
 ];
 
@@ -59,35 +59,35 @@ export const everydayObjects: ObjectItem[] = [
   {
     id: 'toilet',
     word: 'Toilet',
-    imageUrl: 'https://via.placeholder.com/200?text=Toilet',
+    imageUrl: 'https://images.unsplash.com/photo-1566791504814-a46cf8432e8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/toilet',
     category: 'bathroom'
   },
   {
     id: 'sink',
     word: 'Sink',
-    imageUrl: 'https://via.placeholder.com/200?text=Sink',
+    imageUrl: 'https://images.unsplash.com/photo-1563620867-a1127e53171e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/sink',
     category: 'bathroom'
   },
   {
     id: 'shower',
     word: 'Shower',
-    imageUrl: 'https://via.placeholder.com/200?text=Shower',
+    imageUrl: 'https://images.unsplash.com/photo-1586798754715-2026c4d0f6eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/shower',
     category: 'bathroom'
   },
   {
     id: 'toothbrush',
     word: 'Toothbrush',
-    imageUrl: 'https://via.placeholder.com/200?text=Toothbrush',
+    imageUrl: 'https://images.unsplash.com/photo-1559671216-bbc19e1fffd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/toothbrush',
     category: 'bathroom'
   },
   {
     id: 'toothpaste',
     word: 'Toothpaste',
-    imageUrl: 'https://via.placeholder.com/200?text=Toothpaste',
+    imageUrl: 'https://images.unsplash.com/photo-1571942676516-bcab84649e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/toothpaste',
     category: 'bathroom'
   },
@@ -96,35 +96,35 @@ export const everydayObjects: ObjectItem[] = [
   {
     id: 'refrigerator',
     word: 'Refrigerator',
-    imageUrl: 'https://via.placeholder.com/200?text=Refrigerator',
+    imageUrl: 'https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/refrigerator',
     category: 'kitchen'
   },
   {
     id: 'stove',
     word: 'Stove',
-    imageUrl: 'https://via.placeholder.com/200?text=Stove',
+    imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/stove',
     category: 'kitchen'
   },
   {
     id: 'pan',
     word: 'Pan',
-    imageUrl: 'https://via.placeholder.com/200?text=Pan',
+    imageUrl: 'https://images.unsplash.com/photo-1591371254092-7130bfd72701?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/pan',
     category: 'kitchen'
   },
   {
     id: 'pot',
     word: 'Pot',
-    imageUrl: 'https://via.placeholder.com/200?text=Pot',
+    imageUrl: 'https://images.unsplash.com/photo-1577918285932-820dc52f03d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/pot',
     category: 'kitchen'
   },
   {
     id: 'plate',
     word: 'Plate',
-    imageUrl: 'https://via.placeholder.com/200?text=Plate',
+    imageUrl: 'https://images.unsplash.com/photo-1603199863516-6139c211fee3?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/plate',
     category: 'kitchen'
   },
@@ -244,35 +244,35 @@ export const everydayObjects: ObjectItem[] = [
   {
     id: 'car',
     word: 'Car',
-    imageUrl: 'https://via.placeholder.com/200?text=Car',
+    imageUrl: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/car',
     category: 'transportation'
   },
   {
     id: 'bus',
     word: 'Bus',
-    imageUrl: 'https://via.placeholder.com/200?text=Bus',
+    imageUrl: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/bus',
     category: 'transportation'
   },
   {
     id: 'train',
     word: 'Train',
-    imageUrl: 'https://via.placeholder.com/200?text=Train',
+    imageUrl: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/train',
     category: 'transportation'
   },
   {
     id: 'bicycle',
     word: 'Bicycle',
-    imageUrl: 'https://via.placeholder.com/200?text=Bicycle',
+    imageUrl: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/bicycle',
     category: 'transportation'
   },
   {
     id: 'taxi',
     word: 'Taxi',
-    imageUrl: 'https://via.placeholder.com/200?text=Taxi',
+    imageUrl: 'https://images.unsplash.com/photo-1597346908500-28cda8acfe4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/taxi',
     category: 'transportation'
   }
