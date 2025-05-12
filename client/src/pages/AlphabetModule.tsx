@@ -67,13 +67,11 @@ const AlphabetModule = () => {
   return (
     <div className="alphabet-module">
       <div className="flex items-center mb-6">
-        <Link href="/">
-          <a className="mr-3 bg-light rounded-full p-2" aria-label="Go back">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-              <path d="m12 19-7-7 7-7"></path>
-              <path d="M19 12H5"></path>
-            </svg>
-          </a>
+        <Link href="/" className="mr-3 bg-light rounded-full p-2" aria-label="Go back">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+            <path d="m12 19-7-7 7-7"></path>
+            <path d="M19 12H5"></path>
+          </svg>
         </Link>
         <h2 className="text-2xl md:text-3xl font-bold">Alphabet Learning</h2>
       </div>

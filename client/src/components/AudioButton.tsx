@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import useAudio from '@/hooks/useAudio';
 
 interface AudioButtonProps {
@@ -9,6 +9,19 @@ interface AudioButtonProps {
   className?: string;
 }
 
+// Define size and color classes outside the component to avoid recreating them on every render
+const sizeClasses = {
+  sm: 'p-2 text-sm',
+  md: 'p-3 text-base',
+  lg: 'p-4 text-lg'
+};
+
+const colorClasses = {
+  primary: 'bg-primary hover:bg-primary/90',
+  secondary: 'bg-secondary hover:bg-secondary/90',
+  accent: 'bg-accent hover:bg-accent/90'
+};
+
 const AudioButton = ({ 
   src, 
   size = 'md', 
@@ -16,27 +29,16 @@ const AudioButton = ({
   label = 'Listen',
   className = ''
 }: AudioButtonProps) => {
+  // Only using the isPlaying state from our component, not from useAudio
   const [isPlaying, setIsPlaying] = useState(false);
   const { play } = useAudio(src);
   
-  const handlePlay = () => {
+  const handlePlay = useCallback(() => {
     setIsPlaying(true);
     play(() => {
       setIsPlaying(false);
     });
-  };
-  
-  const sizeClasses = {
-    sm: 'p-2 text-sm',
-    md: 'p-3 text-base',
-    lg: 'p-4 text-lg'
-  };
-  
-  const colorClasses = {
-    primary: 'bg-primary hover:bg-primary/90',
-    secondary: 'bg-secondary hover:bg-secondary/90',
-    accent: 'bg-accent hover:bg-accent/90'
-  };
+  }, [play, setIsPlaying]);
   
   return (
     <button
