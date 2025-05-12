@@ -3,11 +3,13 @@ import {
   alphabetProgress, type AlphabetProgress, type InsertAlphabetProgress,
   numbersProgress, type NumbersProgress, type InsertNumbersProgress,
   foodProgress, type FoodProgress, type InsertFoodProgress,
+  objectsProgress, type ObjectsProgress, type InsertObjectsProgress,
   dailyPractice, type DailyPractice, type InsertDailyPractice
 } from "@shared/schema";
 import { alphabet } from "../client/src/utils/alphabet";
 import { numbers } from "../client/src/utils/numbers";
 import { foodVocabulary } from "../client/src/utils/foodVocabulary";
+import { everydayObjects } from "../client/src/utils/everydayObjects";
 
 // Define the full storage interface
 export interface IStorage {
@@ -64,6 +66,7 @@ export class MemStorage implements IStorage {
     this.alphabetProgress = new Map();
     this.numbersProgress = new Map();
     this.foodProgress = new Map();
+    this.objectsProgress = new Map();
     this.dailyPractice = new Map();
     this.currentId = 1;
     
