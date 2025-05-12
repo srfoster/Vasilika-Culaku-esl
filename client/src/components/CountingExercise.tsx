@@ -79,9 +79,15 @@ const CountingExercise = ({
     }
   };
   
-  // Generate array of items to count (limit to 20 max for better performance)
-  const itemsToShow = Math.min(correctCount, 20);
-  const items = [...Array(itemsToShow)].map((_, index) => index);
+  // For large numbers (>20), we'll show fewer items with a multiplier
+  const isLargeNumber = correctCount > 20;
+  
+  // If it's a large number like 30, 40, etc., show groups of 10s
+  const groupSize = isLargeNumber ? 10 : 1;
+  const groupsToShow = isLargeNumber ? Math.min(Math.ceil(correctCount / groupSize), 10) : correctCount;
+  
+  // Generate array of items to count (now representing groups for large numbers)
+  const items = [...Array(groupsToShow)].map((_, index) => index);
   
   // Create audio URL for the instructions
   const instructionAudioUrl = `/api/audio/instruction/count-${itemName}`;
@@ -103,24 +109,32 @@ const CountingExercise = ({
             }`}
             onClick={() => handleCountItem(index)}
           >
-            <img 
-              src={itemImageUrl} 
-              alt={`${itemName} for counting`} 
-              className="w-full h-auto"
-            />
+            <div className="relative">
+              <img 
+                src={itemImageUrl} 
+                alt={`${itemName} for counting`} 
+                className="w-full h-auto"
+              />
+              {isLargeNumber && (
+                <div className="absolute bottom-1 right-1 bg-primary/80 text-white px-2 py-1 rounded-lg text-xs font-bold">
+                  x{groupSize}
+                </div>
+              )}
+            </div>
             {countedItems.has(index) && (
               <div className="absolute top-1 right-1 bg-primary text-white w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">
-                {[...countedItems].indexOf(index) + 1}
+                {Array.from(countedItems).indexOf(index) + 1}
               </div>
             )}
           </div>
         ))}
       </div>
       
-      <p className="text-xl mb-4">How many {itemsToShow === correctCount ? `${itemName}s` : "items"} do you see?</p>
-      {correctCount > itemsToShow && 
+      <p className="text-xl mb-4">How many {itemName}s do you see?</p>
+      {isLargeNumber && 
         <p className="text-sm mb-4 text-gray-500">
-          (Showing {itemsToShow} items as example. There are {correctCount} total.)
+          <strong>Note:</strong> Each item represents a group of {groupSize}. 
+          Count the number of groups ({groupsToShow}) and multiply by {groupSize} to get the total of {correctCount}.
         </p>
       }
       
