@@ -14,6 +14,7 @@ import DirectionsModule from "@/pages/DirectionsModule";
 import EverydayObjectsModule from "@/pages/EverydayObjectsModule";
 import CommunityResourcesModule from "@/pages/CommunityResourcesModule";
 import SurvivalPhrasesModule from "@/pages/SurvivalPhrasesModule";
+import EmotionsModule from "@/pages/EmotionsModule";
 import Practice from "@/pages/Practice";
 import Progress from "@/pages/Progress";
 import Header from "@/components/Header";
@@ -39,6 +40,7 @@ function Router() {
           <Route path="/objects" component={EverydayObjectsModule} />
           <Route path="/resources" component={CommunityResourcesModule} />
           <Route path="/phrases" component={SurvivalPhrasesModule} />
+          <Route path="/emotions" component={EmotionsModule} />
           <Route path="/practice" component={Practice} />
           <Route path="/progress" component={Progress} />
           <Route component={NotFound} />

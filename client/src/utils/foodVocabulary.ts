@@ -51,7 +51,7 @@ export const foodVocabulary: FoodItem[] = [
   {
     id: 'food8',
     word: 'Orange',
-    imageUrl: 'https://images.unsplash.com/photo-1611080626919-7cf5a9041525?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200',
+    imageUrl: 'https://images.unsplash.com/photo-1582979512210-99b6a53386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200',
     audioUrl: '/api/audio/word/orange'
   }
 ];
