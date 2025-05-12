@@ -348,6 +348,38 @@ export const communityResources: ResourceItem[] = [
     imageUrl: 'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/thrift',
     category: 'shopping'
+  },
+  
+  // Religious resources
+  {
+    id: 'emmanuel-apostolic',
+    title: 'Emmanuel Apostolic Church',
+    description: 'Christian church offering services in English and Spanish.',
+    phoneNumber: '(360) 479-3674',
+    address: '1023 6th St, Bremerton, WA 98337',
+    imageUrl: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/church',
+    category: 'religious'
+  },
+  {
+    id: 'st-nicholas-church',
+    title: 'St. Nicholas Catholic Church',
+    description: 'Catholic church with services in English, Spanish, and Tagalog.',
+    phoneNumber: '(360) 377-4674',
+    address: '3510 Cheyenne Dr, Bremerton, WA 98310',
+    imageUrl: 'https://images.unsplash.com/photo-1548690596-f1722c190938?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/church',
+    category: 'religious'
+  },
+  {
+    id: 'summit-avenue',
+    title: 'Summit Avenue Presbyterian Church',
+    description: 'Presbyterian church with community services and outreach programs.',
+    phoneNumber: '(360) 377-2740',
+    address: '403 S Summit Ave, Bremerton, WA 98312',
+    imageUrl: 'https://images.unsplash.com/photo-1438032005730-c779502df39b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/church',
+    category: 'religious'
   }
 ];
 
