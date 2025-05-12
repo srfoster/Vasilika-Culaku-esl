@@ -25,7 +25,7 @@ export const objectCategories: ObjectCategory[] = [
     id: 'kitchen',
     name: 'Kitchen',
     description: 'Items you find in a kitchen',
-    imageUrl: 'https://images.unsplash.com/photo-1556911220-bda9f7f9e627?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300"><rect width="600" height="300" fill="%23f7f7f7"/><rect x="150" y="50" width="300" height="200" rx="10" ry="10" fill="%23e0e0e0" stroke="%23999" stroke-width="4"/><rect x="170" y="70" width="260" height="120" rx="5" ry="5" fill="%23f9c74f" stroke="%23666" stroke-width="2"/><rect x="200" y="210" width="80" height="20" rx="5" ry="5" fill="%23555"/><rect x="320" y="210" width="80" height="20" rx="5" ry="5" fill="%23555"/><circle cx="240" cy="130" r="50" fill="%23fff" stroke="%23666" stroke-width="3"/><circle cx="360" cy="130" r="50" fill="%23fff" stroke="%23666" stroke-width="3"/><text x="300" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Kitchen</text></svg>'
   },
   {
     id: 'bedroom',
@@ -49,7 +49,7 @@ export const objectCategories: ObjectCategory[] = [
     id: 'transportation',
     name: 'Transportation',
     description: 'Common transportation items',
-    imageUrl: 'https://images.unsplash.com/photo-1513618520198-1d3536ea2e56?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300"><rect width="600" height="300" fill="%23e6f2ff"/><rect x="50" y="150" width="500" height="100" fill="%23333" rx="5" ry="5"/><rect x="100" y="120" width="400" height="70" fill="%234d79ff" rx="10" ry="10"/><rect x="120" y="150" width="60" height="40" fill="%23fff" rx="5" ry="5"/><rect x="220" y="150" width="60" height="40" fill="%23fff" rx="5" ry="5"/><rect x="320" y="150" width="60" height="40" fill="%23fff" rx="5" ry="5"/><rect x="420" y="150" width="60" height="40" fill="%23fff" rx="5" ry="5"/><circle cx="100" cy="250" r="30" fill="%23666" stroke="%23000" stroke-width="3"/><circle cx="100" cy="250" r="15" fill="%23fff"/><circle cx="500" cy="250" r="30" fill="%23666" stroke="%23000" stroke-width="3"/><circle cx="500" cy="250" r="15" fill="%23fff"/><circle cx="200" cy="250" r="30" fill="%23666" stroke="%23000" stroke-width="3"/><circle cx="200" cy="250" r="15" fill="%23fff"/><circle cx="400" cy="250" r="30" fill="%23666" stroke="%23000" stroke-width="3"/><circle cx="400" cy="250" r="15" fill="%23fff"/><text x="300" y="280" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Transportation</text></svg>'
   }
 ];
 
