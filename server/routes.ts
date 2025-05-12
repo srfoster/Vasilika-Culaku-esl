@@ -227,7 +227,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     try {
       const audioBuffer = audioService.getLetterAudio(letter);
-      res.set('Content-Type', 'audio/mp3');
+      
+      // Set appropriate headers for the audio file
+      res.set({
+        'Content-Type': 'audio/mpeg',
+        'Content-Length': audioBuffer.length,
+        'Accept-Ranges': 'bytes',
+        'Cache-Control': 'public, max-age=3600'
+      });
+      
       res.send(audioBuffer);
     } catch (error) {
       res.status(404).json({ message: "Audio not found" });
@@ -239,7 +247,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     try {
       const audioBuffer = audioService.getNumberAudio(number);
-      res.set('Content-Type', 'audio/mp3');
+      
+      // Set appropriate headers for the audio file
+      res.set({
+        'Content-Type': 'audio/mpeg',
+        'Content-Length': audioBuffer.length,
+        'Accept-Ranges': 'bytes',
+        'Cache-Control': 'public, max-age=3600'
+      });
+      
       res.send(audioBuffer);
     } catch (error) {
       res.status(404).json({ message: "Audio not found" });
@@ -251,7 +267,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     try {
       const audioBuffer = audioService.getWordAudio(word);
-      res.set('Content-Type', 'audio/mp3');
+      
+      // Set appropriate headers for the audio file
+      res.set({
+        'Content-Type': 'audio/mpeg',
+        'Content-Length': audioBuffer.length,
+        'Accept-Ranges': 'bytes',
+        'Cache-Control': 'public, max-age=3600'
+      });
+      
       res.send(audioBuffer);
     } catch (error) {
       res.status(404).json({ message: "Audio not found" });
@@ -263,7 +287,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     try {
       const audioBuffer = audioService.getSentenceAudio(id);
-      res.set('Content-Type', 'audio/mp3');
+      
+      // Set appropriate headers for the audio file
+      res.set({
+        'Content-Type': 'audio/mpeg',
+        'Content-Length': audioBuffer.length,
+        'Accept-Ranges': 'bytes',
+        'Cache-Control': 'public, max-age=3600'
+      });
+      
       res.send(audioBuffer);
     } catch (error) {
       res.status(404).json({ message: "Audio not found" });
@@ -275,7 +307,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     try {
       const audioBuffer = audioService.getInstructionAudio(id);
-      res.set('Content-Type', 'audio/mp3');
+      
+      // Set appropriate headers for the audio file
+      res.set({
+        'Content-Type': 'audio/mpeg',
+        'Content-Length': audioBuffer.length,
+        'Accept-Ranges': 'bytes',
+        'Cache-Control': 'public, max-age=3600'
+      });
+      
       res.send(audioBuffer);
     } catch (error) {
       res.status(404).json({ message: "Audio not found" });
