@@ -6,7 +6,7 @@ export interface ResourceItem {
   address?: string;
   imageUrl: string;
   audioUrl: string;
-  category: 'emergency' | 'health' | 'education' | 'government' | 'transportation' | 'shopping';
+  category: 'emergency' | 'health' | 'education' | 'government' | 'transportation' | 'shopping' | 'religious';
 }
 
 export interface ResourceCategory {
@@ -60,6 +60,13 @@ export const resourceCategories: ResourceCategory[] = [
     description: 'Places to buy essential items',
     imageUrl: 'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
     color: '#ec4899'
+  },
+  {
+    id: 'religious',
+    name: 'Religious Services',
+    description: 'Churches and places of worship',
+    imageUrl: 'https://images.unsplash.com/photo-1548690596-f1722c190938?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
+    color: '#06b6d4'
   }
 ];
 
@@ -69,7 +76,7 @@ export const communityResources: ResourceItem[] = [
   {
     id: 'emergency-911',
     title: 'Emergency - 911',
-    description: 'Call 911 for any emergency situations like fire, medical emergencies, or crime in progress in Bremerton.',
+    description: 'Call 911 for ANY emergency situations - fire, medical emergency, or crime in progress. In emergencies, always call 911 first.',
     phoneNumber: '911',
     imageUrl: 'https://images.unsplash.com/photo-1606768666853-403c90a981ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/emergency',
@@ -78,7 +85,7 @@ export const communityResources: ResourceItem[] = [
   {
     id: 'emergency-211',
     title: 'Community Resources - 211',
-    description: 'Call 211 for information about community resources, social services, and assistance programs in Kitsap County.',
+    description: 'Call 211 for information about community resources, social services, food assistance, housing help, and utility assistance programs in Kitsap County.',
     phoneNumber: '211',
     imageUrl: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/emergency',
@@ -102,6 +109,26 @@ export const communityResources: ResourceItem[] = [
     address: '911 Park Avenue, Bremerton, WA 98337',
     imageUrl: 'https://images.unsplash.com/photo-1617886322168-72b886573c35?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/fire-department',
+    category: 'emergency'
+  },
+  {
+    id: 'central-kitsap-fire',
+    title: 'Central Kitsap Fire & Rescue',
+    description: 'Fire and emergency services for Central Kitsap area.',
+    phoneNumber: '(360) 447-3550',
+    address: '5300 NW Newberry Hill Rd, Silverdale, WA 98383',
+    imageUrl: 'https://images.unsplash.com/photo-1582551272941-9fc59e9db56d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/fire-department',
+    category: 'emergency'
+  },
+  {
+    id: 'kitsap-mental-health',
+    title: 'Kitsap Mental Health Crisis Line',
+    description: 'Call for emergency mental health assistance and crisis intervention.',
+    phoneNumber: '(360) 479-3033',
+    address: '5455 Almira Dr NE, Bremerton, WA 98311',
+    imageUrl: 'https://images.unsplash.com/photo-1527689638836-411945a2b57c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/emergency',
     category: 'emergency'
   },
   
@@ -178,6 +205,36 @@ export const communityResources: ResourceItem[] = [
     audioUrl: '/api/audio/word/adult-education',
     category: 'education'
   },
+  {
+    id: 'kitsap-community-resources',
+    title: 'Kitsap Community Resources (KCR)',
+    description: 'Comprehensive community assistance center offering many services including: ESL classes, WIC (Women, Infants & Children) nutrition program, housing assistance, kinship care support, and GED preparation.',
+    phoneNumber: '(360) 377-0053',
+    address: '845 8th Street, Bremerton, WA 98337',
+    imageUrl: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/community',
+    category: 'education'
+  },
+  {
+    id: 'bremerton-school-district',
+    title: 'Bremerton School District',
+    description: 'Public school district serving Bremerton. Contact for information about enrolling children in school and ESL programs for students.',
+    phoneNumber: '(360) 473-1000',
+    address: '134 Marion Ave N, Bremerton, WA 98312',
+    imageUrl: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/school',
+    category: 'education'
+  },
+  {
+    id: 'head-start',
+    title: 'Kitsap Community Resources Head Start',
+    description: 'Free preschool program for eligible children ages 3-5. Also offers Early Head Start for children 0-3.',
+    phoneNumber: '(360) 473-2075',
+    address: '1201 Park Avenue, Bremerton, WA 98337',
+    imageUrl: 'https://images.unsplash.com/photo-1587691592099-24045742c181?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/school',
+    category: 'education'
+  },
   
   // Government resources
   {
@@ -198,6 +255,16 @@ export const communityResources: ResourceItem[] = [
     address: '614 Division St, Port Orchard, WA 98366',
     imageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/courthouse',
+    category: 'government'
+  },
+  {
+    id: 'dshs-bremerton',
+    title: 'Department of Social & Health Services',
+    description: 'DSHS provides cash assistance, food benefits, childcare services, health insurance, and other social services for eligible residents.',
+    phoneNumber: '(877) 501-2233',
+    address: '4710 Auto Center Blvd, Bremerton, WA 98312',
+    imageUrl: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    audioUrl: '/api/audio/word/government',
     category: 'government'
   },
   {
