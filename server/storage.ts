@@ -330,6 +330,24 @@ export class MemStorage implements IStorage {
         imageUrl: 'https://images.unsplash.com/photo-1569396116180-210c182bedb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
         status: (alphabetProgress > 50 && numbersProgress > 50 && foodProgress > 50) ? 'in-progress' : 'locked',
         path: '/directions'
+      },
+      {
+        id: 'phrases',
+        title: 'Survival Phrases',
+        description: 'Essential phrases for daily communication',
+        progress: 0,
+        imageUrl: 'https://images.unsplash.com/photo-1516381548400-a347b4951a36?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
+        status: 'in-progress',
+        path: '/phrases'
+      },
+      {
+        id: 'emotions',
+        title: 'Emotions & Feelings',
+        description: 'Express how you feel in English',
+        progress: 0,
+        imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
+        status: 'in-progress',
+        path: '/emotions'
       }
     ];
   }
