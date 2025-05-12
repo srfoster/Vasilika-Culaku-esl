@@ -12,9 +12,6 @@ const Home = () => {
   // Fetch modules data
   const { data: modules, isLoading: isLoadingModules } = useQuery({
     queryKey: ['/api/modules'],
-    onSuccess: (data) => {
-      console.log('Modules data:', data);
-    },
   });
   
   const userName = user?.displayName || 'Student';

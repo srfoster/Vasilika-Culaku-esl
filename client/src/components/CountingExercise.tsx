@@ -79,8 +79,9 @@ const CountingExercise = ({
     }
   };
   
-  // Generate array of items to count
-  const items = [...Array(correctCount)].map((_, index) => index);
+  // Generate array of items to count (limit to 20 max for better performance)
+  const itemsToShow = Math.min(correctCount, 20);
+  const items = [...Array(itemsToShow)].map((_, index) => index);
   
   // Create audio URL for the instructions
   const instructionAudioUrl = `/api/audio/instruction/count-${itemName}`;
@@ -116,7 +117,12 @@ const CountingExercise = ({
         ))}
       </div>
       
-      <p className="text-xl mb-4">How many {itemName}s do you see?</p>
+      <p className="text-xl mb-4">How many {itemsToShow === correctCount ? `${itemName}s` : "items"} do you see?</p>
+      {correctCount > itemsToShow && 
+        <p className="text-sm mb-4 text-gray-500">
+          (Showing {itemsToShow} items as example. There are {correctCount} total.)
+        </p>
+      }
       
       <div className="flex justify-between items-center">
         <div className="flex space-x-2">
