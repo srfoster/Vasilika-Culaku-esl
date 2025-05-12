@@ -29,13 +29,11 @@ const Home = () => {
           </div>
           <ProgressBar progress={userProgress} />
           <div className="mt-4 text-center">
-            <Link href={user?.lastModule || '/alphabet'}>
-              <a className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full inline-flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                Continue Learning
-              </a>
+            <Link href={user?.lastModule || '/alphabet'} className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full inline-flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Continue Learning
             </Link>
           </div>
         </div>
@@ -76,14 +74,12 @@ const Home = () => {
               <h3 className="text-xl font-bold mb-2">Complete today's practice!</h3>
               <p className="text-gray-600">Practice your reading and writing skills for 10 minutes.</p>
               <div className="mt-4">
-                <Link href="/practice">
-                  <a className="bg-accent hover:bg-accent/90 text-white font-bold py-3 px-6 rounded-full inline-flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    Start Practice
-                  </a>
+                <Link href="/practice" className="bg-accent hover:bg-accent/90 text-white font-bold py-3 px-6 rounded-full inline-flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  Start Practice
                 </Link>
               </div>
             </div>

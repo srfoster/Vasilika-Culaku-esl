@@ -6,7 +6,7 @@ const HealthModule = () => {
     'Common symptoms and medical terms',
     'Interactive emergency phrases practice',
     'Hospital and pharmacy vocabulary',
-    'Doctor appointment role-playing scenarios',
+    'Doctor appointment scenarios',
     'Health insurance terminology'
   ];
 
