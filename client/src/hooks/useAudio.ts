@@ -35,8 +35,18 @@ const useAudio = (src: string) => {
       // For sentences, create a distinct tone pattern
       return 440; // A different base frequency for sentences
     }
+    else if (input.includes('/word/')) {
+      // For specific words like objects, create more distinct tones
+      let hash = 0;
+      for (let i = 0; i < identifier.length; i++) {
+        hash = ((hash << 5) - hash) + identifier.charCodeAt(i);
+      }
+      // Create a more musical tone for words
+      const baseFreq = 330; // E4 note - pleasant sound
+      return baseFreq + (Math.abs(hash) % 300); // Range: 330-630Hz
+    }
     else {
-      // For words and other identifiers, create a hash-based frequency
+      // For any other identifiers, create a hash-based frequency
       let hash = 0;
       for (let i = 0; i < identifier.length; i++) {
         hash = ((hash << 5) - hash) + identifier.charCodeAt(i);
@@ -97,14 +107,23 @@ const useAudio = (src: string) => {
         // Set volume
         gainNode.gain.value = 0.5;
         
-        // Setup fade out for smoother sound
+        // Setup fade in and out for smoother sound
         const now = context.currentTime;
-        gainNode.gain.setValueAtTime(0.5, now);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+        const duration = 1.2; // Longer duration for better audibility
+        
+        // Fade in
+        gainNode.gain.setValueAtTime(0.0, now);
+        gainNode.gain.linearRampToValueAtTime(0.7, now + 0.1);
+        
+        // Hold
+        gainNode.gain.setValueAtTime(0.7, now + 0.1);
+        
+        // Fade out
+        gainNode.gain.linearRampToValueAtTime(0.0, now + duration);
         
         // Start the oscillator
         oscillator.start();
-        oscillator.stop(now + 1.0); // Play for 1 second
+        oscillator.stop(now + duration); // Play for longer duration
         
         oscillatorRef.current = oscillator;
         setIsPlaying(true);
