@@ -61,6 +61,23 @@ export const insertFoodProgressSchema = createInsertSchema(foodProgress).pick({
   completed: true,
 });
 
+// New table for everyday objects progress
+export const objectsProgress = pgTable("objects_progress", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull().references(() => users.id),
+  objectId: text("object_id").notNull(),
+  category: text("category").notNull(),
+  completed: boolean("completed").default(false),
+  updatedAt: date("updated_at").defaultNow(),
+});
+
+export const insertObjectsProgressSchema = createInsertSchema(objectsProgress).pick({
+  userId: true,
+  objectId: true,
+  category: true,
+  completed: true,
+});
+
 export const dailyPractice = pgTable("daily_practice", {
   id: serial("id").primaryKey(),
   userId: integer("user_id").notNull().references(() => users.id),
@@ -85,6 +102,9 @@ export type InsertNumbersProgress = z.infer<typeof insertNumbersProgressSchema>;
 
 export type FoodProgress = typeof foodProgress.$inferSelect;
 export type InsertFoodProgress = z.infer<typeof insertFoodProgressSchema>;
+
+export type ObjectsProgress = typeof objectsProgress.$inferSelect;
+export type InsertObjectsProgress = z.infer<typeof insertObjectsProgressSchema>;
 
 export type DailyPractice = typeof dailyPractice.$inferSelect;
 export type InsertDailyPractice = z.infer<typeof insertDailyPracticeSchema>;
