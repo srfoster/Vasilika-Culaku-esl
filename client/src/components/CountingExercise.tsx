@@ -86,6 +86,9 @@ const CountingExercise = ({
   const groupSize = isLargeNumber ? 10 : 1;
   const groupsToShow = isLargeNumber ? Math.min(Math.ceil(correctCount / groupSize), 10) : correctCount;
   
+  // For display purposes in the instruction
+  const displayItemName = itemName === 'square' ? 'square' : itemName;
+  
   // Generate array of items to count (now representing groups for large numbers)
   const items = [...Array(groupsToShow)].map((_, index) => index);
   
@@ -130,10 +133,10 @@ const CountingExercise = ({
         ))}
       </div>
       
-      <p className="text-xl mb-4">How many {itemName}s do you see?</p>
+      <p className="text-xl mb-4">How many {displayItemName}s do you see?</p>
       {isLargeNumber && 
         <p className="text-sm mb-4 text-gray-500">
-          <strong>Note:</strong> Each item represents a group of {groupSize}. 
+          <strong>Note:</strong> Each {displayItemName} represents a group of {groupSize}. 
           Count the number of groups ({groupsToShow}) and multiply by {groupSize} to get the total of {correctCount}.
         </p>
       }

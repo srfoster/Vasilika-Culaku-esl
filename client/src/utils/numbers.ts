@@ -70,54 +70,54 @@ export const numbers: NumberItem[] = [
     number: 20,
     word: 'Twenty',
     imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><rect width="150" height="150" fill="%23f8f9fa" rx="10" ry="10"/><rect x="30" y="40" width="90" height="70" rx="5" ry="5" fill="%23f94144"/><text x="75" y="90" font-family="Arial" font-size="40" font-weight="bold" text-anchor="middle" fill="white">20</text></svg>',
-    itemName: 'dollar'
+    itemName: 'square'
   },
   {
     number: 30,
     word: 'Thirty',
     imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><rect width="150" height="150" fill="%23f8f9fa" rx="10" ry="10"/><rect x="30" y="40" width="90" height="70" rx="5" ry="5" fill="%23f3722c"/><text x="75" y="90" font-family="Arial" font-size="40" font-weight="bold" text-anchor="middle" fill="white">30</text></svg>',
-    itemName: 'minute'
+    itemName: 'square'
   },
   {
     number: 40,
     word: 'Forty',
     imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><rect width="150" height="150" fill="%23f8f9fa" rx="10" ry="10"/><rect x="30" y="40" width="90" height="70" rx="5" ry="5" fill="%23f8961e"/><text x="75" y="90" font-family="Arial" font-size="40" font-weight="bold" text-anchor="middle" fill="white">40</text></svg>',
-    itemName: 'book'
+    itemName: 'square'
   },
   {
     number: 50,
     word: 'Fifty',
     imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><rect width="150" height="150" fill="%23f8f9fa" rx="10" ry="10"/><rect x="30" y="40" width="90" height="70" rx="5" ry="5" fill="%23f9c74f"/><text x="75" y="90" font-family="Arial" font-size="40" font-weight="bold" text-anchor="middle" fill="white">50</text></svg>',
-    itemName: 'cent'
+    itemName: 'square'
   },
   {
     number: 60,
     word: 'Sixty',
     imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><rect width="150" height="150" fill="%23f8f9fa" rx="10" ry="10"/><rect x="30" y="40" width="90" height="70" rx="5" ry="5" fill="%2390be6d"/><text x="75" y="90" font-family="Arial" font-size="40" font-weight="bold" text-anchor="middle" fill="white">60</text></svg>',
-    itemName: 'second'
+    itemName: 'square'
   },
   {
     number: 70,
     word: 'Seventy',
     imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><rect width="150" height="150" fill="%23f8f9fa" rx="10" ry="10"/><rect x="30" y="40" width="90" height="70" rx="5" ry="5" fill="%2343aa8b"/><text x="75" y="90" font-family="Arial" font-size="40" font-weight="bold" text-anchor="middle" fill="white">70</text></svg>',
-    itemName: 'page'
+    itemName: 'square'
   },
   {
     number: 80,
     word: 'Eighty',
     imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><rect width="150" height="150" fill="%23f8f9fa" rx="10" ry="10"/><rect x="30" y="40" width="90" height="70" rx="5" ry="5" fill="%234d908e"/><text x="75" y="90" font-family="Arial" font-size="40" font-weight="bold" text-anchor="middle" fill="white">80</text></svg>',
-    itemName: 'mile'
+    itemName: 'square'
   },
   {
     number: 90,
     word: 'Ninety',
     imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><rect width="150" height="150" fill="%23f8f9fa" rx="10" ry="10"/><rect x="30" y="40" width="90" height="70" rx="5" ry="5" fill="%23577590"/><text x="75" y="90" font-family="Arial" font-size="40" font-weight="bold" text-anchor="middle" fill="white">90</text></svg>',
-    itemName: 'day'
+    itemName: 'square'
   },
   {
     number: 100,
     word: 'One Hundred',
     imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><rect width="150" height="150" fill="%23f8f9fa" rx="10" ry="10"/><circle cx="75" cy="75" r="50" fill="%23277da1"/><text x="75" y="90" font-family="Arial" font-size="30" font-weight="bold" text-anchor="middle" fill="white">100</text></svg>',
-    itemName: 'percent'
+    itemName: 'circle'
   }
 ];
