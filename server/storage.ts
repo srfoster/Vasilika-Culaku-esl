@@ -224,6 +224,17 @@ export class MemStorage implements IStorage {
     ];
     this.foodProgress.set(userId, foodItems);
     
+    // Initialize objects progress
+    const objectItems: ObjectsProgress[] = everydayObjects.map((item, index) => ({
+      id: index + 1,
+      userId,
+      objectId: item.id,
+      category: item.category,
+      completed: false,
+      updatedAt: new Date()
+    }));
+    this.objectsProgress.set(userId, objectItems);
+    
     // Initialize daily practice
     const practiceItem: DailyPractice = {
       id: 1,
@@ -247,6 +258,10 @@ export class MemStorage implements IStorage {
     const foodItems = this.foodProgress.get(userId) || [];
     const completedFood = foodItems.filter(item => item.completed).length;
     const foodProgress = Math.floor((completedFood / 4) * 100); // 4 food exercises
+    
+    const objectItems = this.objectsProgress.get(userId) || [];
+    const completedObjects = objectItems.filter(item => item.completed).length;
+    const objectsProgress = Math.floor((completedObjects / everydayObjects.length) * 100);
     
     // Return module data
     return [
@@ -294,6 +309,15 @@ export class MemStorage implements IStorage {
         imageUrl: 'https://images.unsplash.com/photo-1569396116180-210c182bedb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
         status: 'locked',
         path: '/directions'
+      },
+      {
+        id: 'objects',
+        title: 'Everyday Objects',
+        description: 'Learn names of common objects around you',
+        progress: objectsProgress,
+        imageUrl: 'https://images.unsplash.com/photo-1593085260707-5377ba37f868?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
+        status: objectsProgress === 100 ? 'completed' : objectsProgress > 0 ? 'in-progress' : 'in-progress',
+        path: '/objects'
       }
     ];
   }
@@ -311,10 +335,13 @@ export class MemStorage implements IStorage {
     const foodItems = this.foodProgress.get(userId) || [];
     const practiceItems = this.dailyPractice.get(userId) || [];
     
+    const objectItems = this.objectsProgress.get(userId) || [];
+    
     const completedExercises = 
       alphabetItems.filter(i => i.completed).length +
       numbersItems.filter(i => i.completed).length +
       foodItems.filter(i => i.completed).length +
+      objectItems.filter(i => i.completed).length +
       practiceItems.filter(i => i.completed).length;
     
     // Calculate user's streak (simplified for demo)
@@ -329,8 +356,15 @@ export class MemStorage implements IStorage {
         id: m.id,
         title: m.title,
         progress: m.progress,
-        completedItems: Math.floor((m.progress / 100) * (m.id === 'alphabet' ? alphabet.length : m.id === 'numbers' ? numbers.length : 4)),
-        totalItems: m.id === 'alphabet' ? alphabet.length : m.id === 'numbers' ? numbers.length : 4
+        completedItems: Math.floor((m.progress / 100) * (
+          m.id === 'alphabet' ? alphabet.length : 
+          m.id === 'numbers' ? numbers.length : 
+          m.id === 'objects' ? everydayObjects.length : 4
+        )),
+        totalItems: 
+          m.id === 'alphabet' ? alphabet.length : 
+          m.id === 'numbers' ? numbers.length : 
+          m.id === 'objects' ? everydayObjects.length : 4
       }))
     };
   }
