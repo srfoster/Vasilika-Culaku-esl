@@ -108,62 +108,58 @@ const FoodVocabularyModule = () => {
             className="bg-accent hover:bg-accent/90 text-white rounded-full flex items-center justify-center p-3 mb-4"
             onClick={() => {
               try {
-                // Directly create audio context within a user interaction
-                const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+                // Create simple audio context
+                const context = new (window.AudioContext || (window as any).webkitAudioContext)();
                 
-                // Create a more complex multi-tone pattern for sentences
-                const oscillator1 = audioContext.createOscillator();
-                const oscillator2 = audioContext.createOscillator();
-                const oscillator3 = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
+                // Create simple beep with slight variations for sentences
+                const osc1 = context.createOscillator();
+                osc1.type = 'sine';
+                osc1.frequency.value = 440; // A4
                 
-                // Connect nodes
-                oscillator1.connect(gainNode);
-                oscillator2.connect(gainNode);
-                oscillator3.connect(gainNode);
-                gainNode.connect(audioContext.destination);
+                const osc2 = context.createOscillator();
+                osc2.type = 'sine';
+                osc2.frequency.value = 523; // C5
                 
-                // Set different waveforms
-                oscillator1.type = 'sine';
-                oscillator2.type = 'triangle';
-                oscillator3.type = 'sine';
+                // Volume control
+                const gainNode = context.createGain();
+                gainNode.gain.value = 0.3;
                 
-                // Generate frequencies from sentence
-                const sentence = currentExercise.correctSentence;
-                let hash = 0;
-                for (let i = 0; i < sentence.length; i++) {
-                  hash = ((hash << 5) - hash) + sentence.charCodeAt(i);
-                }
-                hash = Math.abs(hash);
+                // Connect
+                osc1.connect(gainNode);
+                osc2.connect(gainNode);
+                gainNode.connect(context.destination);
                 
-                // Base frequency - C4 (middle C)
-                const baseFreq = 262;
+                // Play two tones in sequence
+                osc1.start();
                 
-                // Create a chord (C major)
-                oscillator1.frequency.value = baseFreq; // C
-                oscillator2.frequency.value = baseFreq * 1.25; // E
-                oscillator3.frequency.value = baseFreq * 1.5;  // G
+                // Stop first tone after 300ms
+                setTimeout(() => {
+                  osc1.stop();
+                  osc1.disconnect();
+                  
+                  // Play second tone 100ms after first one stops
+                  setTimeout(() => {
+                    osc2.start();
+                    
+                    // Stop second tone after 300ms
+                    setTimeout(() => {
+                      osc2.stop();
+                      osc2.disconnect();
+                      gainNode.disconnect();
+                    }, 300);
+                  }, 100);
+                }, 300);
                 
-                // Configure envelope
-                const now = audioContext.currentTime;
-                const duration = 1.5; // longer for sentences
-                
-                // Main oscillator (melody)
-                gainNode.gain.setValueAtTime(0, now);
-                gainNode.gain.linearRampToValueAtTime(0.5, now + 0.1);
-                gainNode.gain.setValueAtTime(0.5, now + 0.1);
-                gainNode.gain.linearRampToValueAtTime(0, now + duration);
-                
-                // Play each oscillator
-                oscillator1.start(now);
-                oscillator2.start(now + 0.1);
-                oscillator3.start(now + 0.2);
-                
-                oscillator1.stop(now + duration);
-                oscillator2.stop(now + duration - 0.1);
-                oscillator3.stop(now + duration - 0.2);
               } catch (error) {
-                console.error("Audio playback failed:", error);
+                console.error("Basic audio failed:", error);
+                
+                // Super fallback - basic browser audio
+                try {
+                  const audio = new Audio("data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU9vT18AAAAA");
+                  audio.play();
+                } catch (e) {
+                  console.error("Even basic audio failed:", e);
+                }
               }
             }}
           >

@@ -140,48 +140,62 @@ const WordMatchingExercise = ({
                 className="bg-accent hover:bg-accent/90 text-white rounded-full flex items-center justify-center p-2 text-sm"
                 onClick={() => {
                   try {
-                    // Directly create audio context within a user interaction
-                    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
+                    // Super simple approach - create audio beep directly
+                    const context = new (window.AudioContext || (window as any).webkitAudioContext)();
                     
-                    // Connect nodes
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
+                    // Create oscillator
+                    const osc = context.createOscillator();
+                    osc.type = 'sine';
                     
-                    // Set parameters based on the word
-                    oscillator.type = 'sine';
+                    // Create a basic frequency based on the word
+                    const notes = [
+                      262, // C4
+                      294, // D4
+                      330, // E4
+                      349, // F4
+                      392, // G4
+                      440, // A4
+                      494, // B4
+                      523  // C5
+                    ];
                     
-                    // Generate a musical frequency based on the word
-                    let hash = 0;
+                    // Simple hash for the word to choose a note
+                    let sum = 0;
                     for (let i = 0; i < item.word.length; i++) {
-                      hash += item.word.charCodeAt(i);
+                      sum += item.word.charCodeAt(i);
                     }
                     
-                    // Use musical tones from a scale for more pleasant sounds
-                    const tones = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25]; // C major scale
-                    const baseFreq = tones[hash % tones.length];
-                    oscillator.frequency.value = baseFreq;
+                    // Pick a note
+                    const noteIndex = sum % notes.length;
+                    osc.frequency.value = notes[noteIndex];
                     
-                    // Configure envelope for a pleasant sound
-                    const now = audioContext.currentTime;
-                    const duration = 1.2;
+                    // Connect to output
+                    const gainNode = context.createGain();
+                    gainNode.gain.value = 0.5;
+                    osc.connect(gainNode);
+                    gainNode.connect(context.destination);
                     
-                    // Fade in
-                    gainNode.gain.setValueAtTime(0, now);
-                    gainNode.gain.linearRampToValueAtTime(0.7, now + 0.1);
+                    // Play a short tone
+                    osc.start();
                     
-                    // Hold
-                    gainNode.gain.setValueAtTime(0.7, now + 0.1);
+                    // Stop after 0.5 seconds
+                    setTimeout(() => {
+                      osc.stop();
+                      // Clean up
+                      osc.disconnect();
+                      gainNode.disconnect();
+                    }, 500);
                     
-                    // Fade out
-                    gainNode.gain.linearRampToValueAtTime(0, now + duration);
-                    
-                    // Play
-                    oscillator.start();
-                    oscillator.stop(now + duration);
                   } catch (error) {
-                    console.error("Audio playback failed:", error);
+                    console.error("Basic audio failed:", error);
+                    
+                    // Ultra fallback - browser beep
+                    try {
+                      const audio = new Audio("data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU9vT18AAAAA");
+                      audio.play();
+                    } catch (e) {
+                      console.error("Even basic audio failed:", e);
+                    }
                   }
                 }}
                 aria-label={`Listen to ${item.word}`}
