@@ -19,8 +19,11 @@ const LetterDisplay = ({
 }: LetterDisplayProps) => {
   const [showExample, setShowExample] = useState(false);
   
+  // Get lowercase version of the letter
+  const lowercaseLetter = letter.toLowerCase();
+  
   // Create audio URL for the letter
-  const letterAudioUrl = `/api/audio/letter/${letter.toLowerCase()}`;
+  const letterAudioUrl = `/api/audio/letter/${lowercaseLetter}`;
   
   // Create audio URL for the example word
   const wordAudioUrl = `/api/audio/word/${example.word.toLowerCase()}`;
@@ -28,9 +31,20 @@ const LetterDisplay = ({
   return (
     <div className="bg-white rounded-xl shadow-md p-6 mb-6">
       <div className="flex flex-col items-center">
-        {/* Letter display */}
-        <div className="text-8xl font-bold text-primary mb-4">
-          {letter}
+        {/* Letter display - Both uppercase and lowercase */}
+        <div className="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-8 mb-4">
+          <div className="flex flex-col items-center">
+            <div className="text-7xl font-bold text-primary">
+              {letter.toUpperCase()}
+            </div>
+            <span className="text-sm text-gray-500 mt-1">Uppercase</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="text-7xl font-bold text-secondary">
+              {lowercaseLetter}
+            </div>
+            <span className="text-sm text-gray-500 mt-1">Lowercase</span>
+          </div>
         </div>
         
         {/* Action buttons */}
@@ -95,7 +109,7 @@ const LetterDisplay = ({
               />
               <p className="text-2xl font-bold">
                 {example.word.split('').map((char, index) => (
-                  char.toLowerCase() === letter.toLowerCase() ? 
+                  char.toLowerCase() === lowercaseLetter ? 
                     <span key={index} className="text-primary">{char}</span> : 
                     <span key={index}>{char}</span>
                 ))}

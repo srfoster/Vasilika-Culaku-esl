@@ -9,6 +9,7 @@ import { alphabet } from '@/utils/alphabet';
 
 const AlphabetModule = () => {
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
+  const [practiceLowercase, setPracticeLowercase] = useState(false);
   
   // Fetch user's alphabet progress
   const { data: progress } = useQuery({
@@ -44,6 +45,11 @@ const AlphabetModule = () => {
     }
   };
   
+  // Toggle between uppercase and lowercase practice
+  const toggleCase = () => {
+    setPracticeLowercase(prev => !prev);
+  };
+  
   // Handle saving the drawing
   const handleSaveDrawing = (data: string) => {
     // Save the drawing progress
@@ -52,6 +58,11 @@ const AlphabetModule = () => {
       completed: true
     });
   };
+  
+  // Get current letter in the right case for practice
+  const practiceLetterDisplay = practiceLowercase 
+    ? currentLetter.letter.toLowerCase() 
+    : currentLetter.letter.toUpperCase();
   
   return (
     <div className="alphabet-module">
@@ -94,11 +105,29 @@ const AlphabetModule = () => {
         </div>
       </div>
 
-      {/* Practice section */}
-      <DrawingCanvas 
-        prompt={`Trace the letter "${currentLetter.letter}"`}
-        onSave={handleSaveDrawing}
-      />
+      {/* Practice section with case toggle */}
+      <div className="bg-white rounded-xl shadow-md p-6 mb-6">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold">Practice Writing</h3>
+          <button 
+            className={`px-4 py-2 rounded-lg ${practiceLowercase ? 'bg-secondary text-white' : 'bg-gray-200'}`}
+            onClick={toggleCase}
+          >
+            {practiceLowercase ? 'Practicing lowercase' : 'Practicing uppercase'}
+          </button>
+        </div>
+        
+        <div className="flex justify-center mb-4">
+          <div className="text-8xl font-bold text-gray-300 opacity-30">
+            {practiceLetterDisplay}
+          </div>
+        </div>
+        
+        <DrawingCanvas 
+          prompt={`Trace the ${practiceLowercase ? 'lowercase' : 'uppercase'} letter "${practiceLetterDisplay}"`}
+          onSave={handleSaveDrawing}
+        />
+      </div>
     </div>
   );
 };
