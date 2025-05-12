@@ -32,18 +32,60 @@ const useAudio = (src: string) => {
       return 300 + (number * 20); // Start at 300Hz, increase by 20Hz per number
     } 
     else if (input.includes('/sentence/')) {
-      // For sentences, create a distinct tone pattern
-      return 440; // A different base frequency for sentences
-    }
-    else if (input.includes('/word/')) {
-      // For specific words like objects, create more distinct tones
+      // For sentences, create a more complex chord-like tone
+      
+      // Create a multi-tone composition representing a sentence
+      // We'll use a hash of the identifier to seed the frequency calculation
       let hash = 0;
       for (let i = 0; i < identifier.length; i++) {
         hash = ((hash << 5) - hash) + identifier.charCodeAt(i);
       }
-      // Create a more musical tone for words
-      const baseFreq = 330; // E4 note - pleasant sound
-      return baseFreq + (Math.abs(hash) % 300); // Range: 330-630Hz
+      hash = Math.abs(hash);
+      
+      // Base tone in a musical scale (C major)
+      const baseFreq = 262; // C4
+      
+      // Use the hash to determine which chord pattern to use
+      // This creates more melodious tones for sentences
+      const chordPatterns = [
+        [1, 1.25, 1.5],    // Major chord (do-mi-sol)
+        [1, 1.2, 1.5],     // Minor chord
+        [1, 1.25, 1.6],    // Augmented chord
+        [1, 1.2, 1.4]      // Diminished chord
+      ];
+      
+      // Pick a chord pattern based on the hash
+      const patternIndex = hash % chordPatterns.length;
+      const pattern = chordPatterns[patternIndex];
+      
+      // Return the base frequency (other tones will be generated in the Web Audio part)
+      return baseFreq * pattern[0];
+    }
+    else if (input.includes('/word/')) {
+      // For specific words like objects and food, create more distinct tones
+      // Create different tone signatures based on word categories
+      if (identifier === 'rice' || identifier === 'bread' || identifier === 'egg' || 
+          identifier === 'milk' || identifier === 'water' || identifier === 'fish' ||
+          identifier === 'apple' || identifier === 'orange') {
+        // Food items get a bright, clear tone (C major scale)
+        const foodBaseFreq = 440; // A4 note
+        let number = 0;
+        for (let i = 0; i < identifier.length; i++) {
+          number += identifier.charCodeAt(i);
+        }
+        // Create a pleasing musical tone based on common scale frequencies
+        const tones = [440, 493.88, 523.25, 587.33, 659.25, 698.46, 783.99, 880];
+        return tones[number % tones.length];
+      } else {
+        // Other objects get a slightly different tone
+        let hash = 0;
+        for (let i = 0; i < identifier.length; i++) {
+          hash = ((hash << 5) - hash) + identifier.charCodeAt(i);
+        }
+        // Create a more musical tone for words
+        const baseFreq = 330; // E4 note - pleasant sound
+        return baseFreq + (Math.abs(hash) % 300); // Range: 330-630Hz
+      }
     }
     else {
       // For any other identifiers, create a hash-based frequency
@@ -101,7 +143,60 @@ const useAudio = (src: string) => {
         gainNode.connect(context.destination);
         
         // Configure the oscillator
-        oscillator.type = 'sine';
+        // Different wave types for different sounds
+        if (src.includes('/word/')) {
+          // Words sound better with sine waves (smooth)
+          oscillator.type = 'sine';
+        } else if (src.includes('/letter/')) {
+          // Letters sound better with triangle waves (bright but not harsh)
+          oscillator.type = 'triangle';
+        } else if (src.includes('/sentence/')) {
+          // Sentences get a more complex waveform
+          oscillator.type = 'sine';
+          
+          // For sentences, we'll add a second oscillator for a richer sound
+          // The identifier is in the URL
+          const parts = src.split('/');
+          const identifier = parts[parts.length - 1];
+          
+          let hash = 0;
+          for (let i = 0; i < identifier.length; i++) {
+            hash = ((hash << 5) - hash) + identifier.charCodeAt(i);
+          }
+          hash = Math.abs(hash);
+          
+          // Create a second oscillator for a chord effect with sentences
+          const osc2 = context.createOscillator();
+          osc2.connect(gainNode);
+          osc2.type = 'triangle';
+          
+          // Derive a harmony note from the base frequency
+          const baseFreq = getFrequency(src);
+          const chordPatterns = [
+            [1, 1.25, 1.5],    // Major chord (do-mi-sol)
+            [1, 1.2, 1.5],     // Minor chord
+            [1, 1.25, 1.6],    // Augmented chord
+            [1, 1.2, 1.4]      // Diminished chord
+          ];
+          
+          const patternIndex = hash % chordPatterns.length;
+          const pattern = chordPatterns[patternIndex];
+          
+          // Set the frequency to a harmony note
+          osc2.frequency.value = baseFreq * pattern[1];
+          
+          // Start and stop with the main oscillator
+          const now = context.currentTime;
+          osc2.start();
+          osc2.stop(now + 1.2);
+        } else if (src.includes('/number/')) {
+          // Numbers sound better with sawtooth waves (distinctive)
+          oscillator.type = 'sawtooth';
+        } else {
+          // Default to sine for anything else
+          oscillator.type = 'sine';
+        }
+        
         oscillator.frequency.value = getFrequency(src);
         
         // Set volume
