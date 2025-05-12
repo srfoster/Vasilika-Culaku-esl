@@ -110,14 +110,14 @@ export const everydayObjects: ObjectItem[] = [
   {
     id: 'pan',
     word: 'Pan',
-    imageUrl: 'https://images.unsplash.com/photo-1591371254092-7130bfd72701?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    imageUrl: 'https://images.unsplash.com/photo-1574181609941-50f3e3ff8c01?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/pan',
     category: 'kitchen'
   },
   {
     id: 'pot',
     word: 'Pot',
-    imageUrl: 'https://images.unsplash.com/photo-1577918285932-820dc52f03d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    imageUrl: 'https://images.unsplash.com/photo-1625961332771-3f40b0e2bdcf?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/pot',
     category: 'kitchen'
   },
@@ -133,21 +133,21 @@ export const everydayObjects: ObjectItem[] = [
   {
     id: 'bed',
     word: 'Bed',
-    imageUrl: 'https://via.placeholder.com/200?text=Bed',
+    imageUrl: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/bed',
     category: 'bedroom'
   },
   {
     id: 'pillow',
     word: 'Pillow',
-    imageUrl: 'https://via.placeholder.com/200?text=Pillow',
+    imageUrl: 'https://images.unsplash.com/photo-1592789705501-f9ae4433058b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/pillow',
     category: 'bedroom'
   },
   {
     id: 'blanket',
     word: 'Blanket',
-    imageUrl: 'https://via.placeholder.com/200?text=Blanket',
+    imageUrl: 'https://images.unsplash.com/photo-1580893218779-404124c3e821?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
     audioUrl: '/api/audio/word/blanket',
     category: 'bedroom'
   },
