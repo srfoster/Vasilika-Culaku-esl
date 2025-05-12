@@ -110,7 +110,7 @@ export const everydayObjects: ObjectItem[] = [
   {
     id: 'pan',
     word: 'Pan',
-    imageUrl: 'https://images.unsplash.com/photo-1574181609941-50f3e3ff8c01?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><circle cx="150" cy="150" r="100" fill="%23999" stroke="%23333" stroke-width="6"/><circle cx="150" cy="150" r="85" fill="%23777"/><rect x="230" y="140" width="80" height="20" rx="5" fill="%23333"/><text x="150" y="160" font-family="Arial" font-size="30" text-anchor="middle" fill="%23fff">Pan</text></svg>',
     audioUrl: '/api/audio/word/pan',
     category: 'kitchen'
   },
@@ -124,7 +124,7 @@ export const everydayObjects: ObjectItem[] = [
   {
     id: 'plate',
     word: 'Plate',
-    imageUrl: 'https://images.unsplash.com/photo-1603199863516-6139c211fee3?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><circle cx="150" cy="150" r="120" fill="%23fff" stroke="%23333" stroke-width="3"/><circle cx="150" cy="150" r="110" fill="%23f0f0f0" stroke="%23aaa" stroke-width="2"/><circle cx="150" cy="150" r="80" fill="%23f7f7f7" stroke="%23ddd" stroke-width="1"/><text x="150" y="160" font-family="Arial" font-size="30" text-anchor="middle" fill="%23444">Plate</text></svg>',
     audioUrl: '/api/audio/word/plate',
     category: 'kitchen'
   },
