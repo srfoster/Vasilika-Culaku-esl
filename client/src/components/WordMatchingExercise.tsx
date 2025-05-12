@@ -136,11 +136,63 @@ const WordMatchingExercise = ({
               {item.word}
             </div>
             <div className="mt-2">
-              <AudioButton 
-                src={item.audioUrl} 
-                size="sm" 
-                label="" 
-              />
+              <button 
+                className="bg-accent hover:bg-accent/90 text-white rounded-full flex items-center justify-center p-2 text-sm"
+                onClick={() => {
+                  try {
+                    // Directly create audio context within a user interaction
+                    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    // Connect nodes
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    // Set parameters based on the word
+                    oscillator.type = 'sine';
+                    
+                    // Generate a musical frequency based on the word
+                    let hash = 0;
+                    for (let i = 0; i < item.word.length; i++) {
+                      hash += item.word.charCodeAt(i);
+                    }
+                    
+                    // Use musical tones from a scale for more pleasant sounds
+                    const tones = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25]; // C major scale
+                    const baseFreq = tones[hash % tones.length];
+                    oscillator.frequency.value = baseFreq;
+                    
+                    // Configure envelope for a pleasant sound
+                    const now = audioContext.currentTime;
+                    const duration = 1.2;
+                    
+                    // Fade in
+                    gainNode.gain.setValueAtTime(0, now);
+                    gainNode.gain.linearRampToValueAtTime(0.7, now + 0.1);
+                    
+                    // Hold
+                    gainNode.gain.setValueAtTime(0.7, now + 0.1);
+                    
+                    // Fade out
+                    gainNode.gain.linearRampToValueAtTime(0, now + duration);
+                    
+                    // Play
+                    oscillator.start();
+                    oscillator.stop(now + duration);
+                  } catch (error) {
+                    console.error("Audio playback failed:", error);
+                  }
+                }}
+                aria-label={`Listen to ${item.word}`}
+              >
+                {/* Audio icon */}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+              </button>
             </div>
           </div>
         ))}
