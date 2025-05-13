@@ -154,14 +154,14 @@ export const everydayObjects: ObjectItem[] = [
   {
     id: 'dresser',
     word: 'Dresser',
-    imageUrl: 'https://via.placeholder.com/200?text=Dresser',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><rect x="60" y="70" width="180" height="180" fill="%23a87328" stroke="%23333" stroke-width="3"/><line x1="60" y1="130" x2="240" y2="130" stroke="%23333" stroke-width="3"/><line x1="60" y1="190" x2="240" y2="190" stroke="%23333" stroke-width="3"/><circle cx="120" cy="100" r="10" fill="%23333"/><circle cx="180" cy="100" r="10" fill="%23333"/><circle cx="120" cy="160" r="10" fill="%23333"/><circle cx="180" cy="160" r="10" fill="%23333"/><circle cx="120" cy="220" r="10" fill="%23333"/><circle cx="180" cy="220" r="10" fill="%23333"/><text x="150" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Dresser</text></svg>',
     audioUrl: '/api/audio/word/dresser',
     category: 'bedroom'
   },
   {
     id: 'lamp',
     word: 'Lamp',
-    imageUrl: 'https://via.placeholder.com/200?text=Lamp',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><path d="M120,200 L180,200 L170,100 L130,100 Z" fill="%23f59e0b" stroke="%23333" stroke-width="2"/><rect x="140" y="200" width="20" height="50" fill="%23333" stroke="%23000" stroke-width="2"/><rect x="130" y="250" width="40" height="10" rx="3" ry="3" fill="%23333" stroke="%23000" stroke-width="1"/><ellipse cx="150" cy="100" rx="40" ry="20" fill="%23f59e0b" stroke="%23333" stroke-width="2"/><path d="M150,80 L150,50" stroke="%23333" stroke-width="2" stroke-linecap="round"/><ellipse cx="150" cy="85" rx="30" ry="10" fill="%23fff6e6" stroke="%23333" stroke-width="1" opacity="0.6"/><text x="150" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Lamp</text></svg>',
     audioUrl: '/api/audio/word/lamp',
     category: 'bedroom'
   },
@@ -170,35 +170,35 @@ export const everydayObjects: ObjectItem[] = [
   {
     id: 'sofa',
     word: 'Sofa',
-    imageUrl: 'https://via.placeholder.com/200?text=Sofa',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><rect x="25" y="150" width="250" height="80" rx="10" ry="10" fill="%234b6cb7" stroke="%23333" stroke-width="3"/><rect x="25" y="120" width="40" height="80" rx="5" ry="5" fill="%234b6cb7" stroke="%23333" stroke-width="3"/><rect x="235" y="120" width="40" height="80" rx="5" ry="5" fill="%234b6cb7" stroke="%23333" stroke-width="3"/><rect x="25" y="230" width="250" height="20" fill="%23555" stroke="%23333" stroke-width="1"/><rect x="65" y="150" width="170" height="30" rx="8" ry="8" fill="%23667eea" stroke="%23333" stroke-width="2"/><text x="150" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Sofa</text></svg>',
     audioUrl: '/api/audio/word/sofa',
     category: 'living'
   },
   {
     id: 'chair',
     word: 'Chair',
-    imageUrl: 'https://via.placeholder.com/200?text=Chair',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><rect x="75" y="150" width="150" height="40" rx="8" ry="8" fill="%23f59e0b" stroke="%23333" stroke-width="3"/><rect x="75" y="190" width="20" height="60" fill="%23333" stroke="%23000" stroke-width="2"/><rect x="205" y="190" width="20" height="60" fill="%23333" stroke="%23000" stroke-width="2"/><rect x="85" y="80" width="130" height="70" rx="5" ry="5" fill="%23f59e0b" stroke="%23333" stroke-width="3"/><line x1="85" y1="80" x2="75" y2="150" stroke="%23333" stroke-width="3"/><line x1="215" y1="80" x2="225" y2="150" stroke="%23333" stroke-width="3"/><text x="150" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Chair</text></svg>',
     audioUrl: '/api/audio/word/chair',
     category: 'living'
   },
   {
     id: 'table',
     word: 'Table',
-    imageUrl: 'https://via.placeholder.com/200?text=Table',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><rect x="60" y="130" width="180" height="20" rx="3" ry="3" fill="%23a87328" stroke="%23333" stroke-width="3"/><rect x="70" y="150" width="20" height="100" fill="%23a87328" stroke="%23333" stroke-width="2"/><rect x="210" y="150" width="20" height="100" fill="%23a87328" stroke="%23333" stroke-width="2"/><rect x="90" y="150" width="20" height="100" fill="%23a87328" stroke="%23333" stroke-width="2"/><rect x="190" y="150" width="20" height="100" fill="%23a87328" stroke="%23333" stroke-width="2"/><ellipse cx="150" cy="130" rx="100" ry="30" fill="%23d4a76a" stroke="%23333" stroke-width="3"/><text x="150" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Table</text></svg>',
     audioUrl: '/api/audio/word/table',
     category: 'living'
   },
   {
     id: 'television',
     word: 'Television',
-    imageUrl: 'https://via.placeholder.com/200?text=Television',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><rect x="50" y="80" width="200" height="140" rx="5" ry="5" fill="%23333" stroke="%23000" stroke-width="4"/><rect x="60" y="90" width="180" height="120" fill="%23aaa" stroke="%23000" stroke-width="2"/><rect x="70" y="100" width="160" height="100" fill="%230f172a"/><circle cx="150" cy="150" r="20" fill="%23ffa500"/><rect x="120" y="220" width="60" height="30" rx="3" ry="3" fill="%23444"/><rect x="90" y="250" width="120" height="10" rx="3" ry="3" fill="%23444"/><text x="150" y="270" font-family="Arial" font-size="20" text-anchor="middle" fill="%23333">Television</text></svg>',
     audioUrl: '/api/audio/word/television',
     category: 'living'
   },
   {
     id: 'window',
     word: 'Window',
-    imageUrl: 'https://via.placeholder.com/200?text=Window',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><rect x="70" y="80" width="160" height="150" fill="%23fff" stroke="%23333" stroke-width="8"/><line x1="150" y1="80" x2="150" y2="230" stroke="%23333" stroke-width="8"/><line x1="70" y1="155" x2="230" y2="155" stroke="%23333" stroke-width="8"/><rect x="75" y="85" width="70" height="65" fill="%2387ceeb"/><rect x="155" y="85" width="70" height="65" fill="%2387ceeb"/><rect x="75" y="160" width="70" height="65" fill="%2387ceeb"/><rect x="155" y="160" width="70" height="65" fill="%2387ceeb"/><text x="150" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Window</text></svg>',
     audioUrl: '/api/audio/word/window',
     category: 'living'
   },
@@ -207,35 +207,35 @@ export const everydayObjects: ObjectItem[] = [
   {
     id: 'phone',
     word: 'Phone',
-    imageUrl: 'https://via.placeholder.com/200?text=Phone',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><rect x="100" y="50" width="100" height="200" rx="10" ry="10" fill="%23333" stroke="%23000" stroke-width="3"/><rect x="110" y="70" width="80" height="140" fill="%2300aaff" stroke="%23000" stroke-width="1"/><circle cx="150" cy="230" r="15" fill="%23555" stroke="%23000" stroke-width="1"/><rect x="135" y="60" width="30" height="5" rx="2" ry="2" fill="%23555"/><text x="150" y="145" font-family="Arial" font-size="10" text-anchor="middle" fill="%23fff">12:45 PM</text><text x="150" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Phone</text></svg>',
     audioUrl: '/api/audio/word/phone',
     category: 'technology'
   },
   {
     id: 'computer',
     word: 'Computer',
-    imageUrl: 'https://via.placeholder.com/200?text=Computer',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><rect x="50" y="80" width="200" height="120" rx="5" ry="5" fill="%23333" stroke="%23000" stroke-width="3"/><rect x="60" y="90" width="180" height="100" fill="%230284c7" stroke="%23000" stroke-width="1"/><rect x="100" y="200" width="100" height="10" fill="%23555"/><rect x="80" y="210" width="140" height="30" rx="5" ry="5" fill="%23888" stroke="%23000" stroke-width="2"/><circle cx="150" cy="140" r="5" fill="%23fff"/><text x="150" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Computer</text></svg>',
     audioUrl: '/api/audio/word/computer',
     category: 'technology'
   },
   {
     id: 'atm',
     word: 'ATM',
-    imageUrl: 'https://via.placeholder.com/200?text=ATM',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><rect x="70" y="50" width="160" height="200" rx="5" ry="5" fill="%23464646" stroke="%23000" stroke-width="3"/><rect x="90" y="80" width="120" height="80" fill="%23111" stroke="%23000" stroke-width="2"/><rect x="100" y="90" width="100" height="60" fill="%230369a1" stroke="%23000" stroke-width="1"/><text x="150" y="125" font-family="Arial" font-size="14" text-anchor="middle" fill="%23fff">Welcome</text><rect x="100" y="170" width="100" height="10" fill="%23222" stroke="%23000" stroke-width="1"/><rect x="90" y="190" width="30" height="30" fill="%23222" stroke="%23000" stroke-width="1"/><rect x="135" y="190" width="30" height="30" fill="%23222" stroke="%23000" stroke-width="1"/><rect x="180" y="190" width="30" height="30" fill="%23222" stroke="%23000" stroke-width="1"/><text x="150" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">ATM</text></svg>',
     audioUrl: '/api/audio/word/atm',
     category: 'technology'
   },
   {
     id: 'charger',
     word: 'Charger',
-    imageUrl: 'https://via.placeholder.com/200?text=Charger',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><rect x="120" y="100" width="60" height="60" rx="5" ry="5" fill="%23fff" stroke="%23000" stroke-width="2"/><circle cx="150" cy="130" r="10" fill="%23333"/><path d="M150,130 L150,40" stroke="%23000" stroke-width="4"/><rect x="140" y="40" width="20" height="20" fill="%23555" stroke="%23000" stroke-width="2"/><path d="M150,160 C100,160 100,200 100,230" stroke="%23000" stroke-width="3" fill="none"/><circle cx="100" cy="230" r="15" fill="%23ccc" stroke="%23000" stroke-width="2"/><text x="150" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Charger</text></svg>',
     audioUrl: '/api/audio/word/charger',
     category: 'technology'
   },
   {
     id: 'camera',
     word: 'Camera',
-    imageUrl: 'https://via.placeholder.com/200?text=Camera',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><rect x="60" y="100" width="180" height="100" rx="10" ry="10" fill="%23333" stroke="%23000" stroke-width="3"/><rect x="130" y="80" width="40" height="20" fill="%23333" stroke="%23000" stroke-width="2"/><circle cx="150" cy="150" r="40" fill="%23222" stroke="%23000" stroke-width="2"/><circle cx="150" cy="150" r="30" fill="%23444" stroke="%23000" stroke-width="2"/><circle cx="150" cy="150" r="20" fill="%23666" stroke="%23000" stroke-width="1"/><circle cx="150" cy="150" r="10" fill="%23888" stroke="%23000" stroke-width="1"/><circle cx="180" cy="120" r="5" fill="%23ff0000"/><text x="150" y="270" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">Camera</text></svg>',
     audioUrl: '/api/audio/word/camera',
     category: 'technology'
   },
