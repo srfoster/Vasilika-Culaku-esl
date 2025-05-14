@@ -582,7 +582,7 @@ const LocationCard = ({ location }: { location: LocationType }) => {
           <text x="150" y="240" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">COLLEGE CAMPUS</text>
         </svg>`;
 
-      case 'grocery-store':
+      case 'grocery':
         return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
           <rect width="300" height="300" fill="#f0f9ff"/>
           <!-- Store building -->
@@ -824,6 +824,294 @@ const LocationCard = ({ location }: { location: LocationType }) => {
           <!-- Label -->
           <rect x="70" y="280" width="160" height="40" fill="#cbd5e1" rx="5" opacity="0.9"/>
           <text x="150" y="305" font-family="Arial" font-size="18" text-anchor="middle" fill="#0f172a">LIBRARY</text>
+        </svg>`;
+      
+      case 'post-office':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Post Office building -->
+          <rect x="60" y="80" width="180" height="120" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Entrance -->
+          <rect x="125" y="150" width="50" height="50" fill="#475569"/>
+          <line x1="150" y1="150" x2="150" y2="200" stroke="#f8fafc" stroke-width="2"/>
+          
+          <!-- Windows -->
+          <rect x="80" y="100" width="30" height="30" fill="#93c5fd"/>
+          <rect x="130" y="100" width="30" height="30" fill="#93c5fd"/>
+          <rect x="180" y="100" width="30" height="30" fill="#93c5fd"/>
+          
+          <!-- Post Office Sign -->
+          <rect x="90" y="50" width="120" height="30" fill="#0369a1" stroke="#075985" stroke-width="1"/>
+          <text x="150" y="70" font-family="Arial" font-size="14" text-anchor="middle" fill="#ffffff" font-weight="bold">POST OFFICE</text>
+          
+          <!-- Flag -->
+          <line x1="225" y1="80" x2="225" y2="130" stroke="#334155" stroke-width="2"/>
+          <rect x="225" y="80" width="30" height="20" fill="#ef4444"/>
+          
+          <!-- Letters and Packages -->
+          <rect x="75" y="215" width="40" height="25" fill="#fde68a" stroke="#ca8a04" stroke-width="1"/> <!-- Package -->
+          <rect x="130" y="215" width="30" height="20" fill="#ffffff" stroke="#64748b" stroke-width="1"/> <!-- Letter -->
+          <rect x="170" y="215" width="35" height="25" fill="#fef3c7" stroke="#ca8a04" stroke-width="1"/> <!-- Box -->
+          
+          <!-- Steps -->
+          <rect x="110" y="200" width="80" height="5" fill="#94a3b8"/>
+          <rect x="115" y="205" width="70" height="5" fill="#94a3b8"/>
+          
+          <!-- Ground -->
+          <rect x="30" y="240" width="240" height="10" fill="#94a3b8"/>
+          
+          <!-- Label -->
+          <rect x="70" y="250" width="160" height="40" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="275" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">POST OFFICE</text>
+        </svg>`;
+      
+      case 'bank':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Bank building with classic columns -->
+          <rect x="50" y="90" width="200" height="110" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Roof/Pediment -->
+          <path d="M40 90 L150 40 L260 90 Z" fill="#cbd5e1" stroke="#64748b" stroke-width="2"/>
+          
+          <!-- Columns -->
+          <rect x="70" y="90" width="15" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="100" y="90" width="15" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="130" y="90" width="15" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="160" y="90" width="15" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="190" y="90" width="15" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="220" y="90" width="15" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          
+          <!-- Steps -->
+          <rect x="40" y="200" width="220" height="10" fill="#94a3b8"/>
+          <rect x="50" y="210" width="200" height="10" fill="#94a3b8"/>
+          <rect x="60" y="220" width="180" height="10" fill="#94a3b8"/>
+          
+          <!-- Entrance -->
+          <rect x="130" y="150" width="40" height="60" fill="#475569"/>
+          <line x1="150" y1="150" x2="150" y2="210" stroke="#f8fafc" stroke-width="2"/>
+          
+          <!-- Dollar sign symbol -->
+          <text x="150" y="75" font-family="Arial" font-size="35" text-anchor="middle" font-weight="bold" fill="#0c4a6e">$</text>
+          
+          <!-- Money/coins -->
+          <circle cx="85" cy="245" r="10" fill="#fde68a" stroke="#ca8a04" stroke-width="1"/> <!-- Coin -->
+          <circle cx="105" cy="245" r="10" fill="#fde68a" stroke="#ca8a04" stroke-width="1"/> <!-- Coin -->
+          <rect x="190" y="235" width="40" height="20" fill="#84cc16" stroke="#4d7c0f" stroke-width="1"/> <!-- Money -->
+          
+          <!-- Ground -->
+          <rect x="30" y="230" width="240" height="5" fill="#94a3b8"/>
+          
+          <!-- Label -->
+          <rect x="70" y="260" width="160" height="35" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="283" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">BANK</text>
+        </svg>`;
+      
+      case 'restaurant':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Restaurant building -->
+          <rect x="60" y="80" width="180" height="120" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Entrance -->
+          <rect x="130" y="150" width="40" height="50" fill="#475569"/>
+          <line x1="150" y1="150" x2="150" y2="200" stroke="#f8fafc" stroke-width="2"/>
+          
+          <!-- Awning -->
+          <path d="M50 100 L250 100 L250 120 L50 120 Z" fill="#fb7185" stroke="#be123c" stroke-width="1"/>
+          <line x1="70" y1="100" x2="70" y2="120" stroke="#be123c" stroke-width="1"/>
+          <line x1="90" y1="100" x2="90" y2="120" stroke="#be123c" stroke-width="1"/>
+          <line x1="110" y1="100" x2="110" y2="120" stroke="#be123c" stroke-width="1"/>
+          <line x1="130" y1="100" x2="130" y2="120" stroke="#be123c" stroke-width="1"/>
+          <line x1="150" y1="100" x2="150" y2="120" stroke="#be123c" stroke-width="1"/>
+          <line x1="170" y1="100" x2="170" y2="120" stroke="#be123c" stroke-width="1"/>
+          <line x1="190" y1="100" x2="190" y2="120" stroke="#be123c" stroke-width="1"/>
+          <line x1="210" y1="100" x2="210" y2="120" stroke="#be123c" stroke-width="1"/>
+          <line x1="230" y1="100" x2="230" y2="120" stroke="#be123c" stroke-width="1"/>
+          
+          <!-- Windows -->
+          <rect x="80" y="125" width="40" height="40" fill="#93c5fd"/>
+          <rect x="180" y="125" width="40" height="40" fill="#93c5fd"/>
+          
+          <!-- Tables with people -->
+          <circle cx="80" cy="225" r="15" fill="#fef3c7"/> <!-- Table -->
+          <circle cx="75" cy="220" r="5" fill="#fb7185"/> <!-- Person -->
+          <circle cx="85" cy="230" r="5" fill="#0ea5e9"/> <!-- Person -->
+          
+          <circle cx="150" cy="225" r="15" fill="#fef3c7"/> <!-- Table -->
+          <circle cx="145" cy="220" r="5" fill="#fb7185"/> <!-- Person -->
+          <circle cx="155" cy="230" r="5" fill="#0ea5e9"/> <!-- Person -->
+          
+          <circle cx="220" cy="225" r="15" fill="#fef3c7"/> <!-- Table -->
+          <circle cx="215" cy="220" r="5" fill="#fb7185"/> <!-- Person -->
+          <circle cx="225" cy="230" r="5" fill="#0ea5e9"/> <!-- Person -->
+          
+          <!-- Food items -->
+          <path d="M205 215 Q220 205 235 215" stroke="#ef4444" stroke-width="2" fill="none"/> <!-- Plate with food -->
+          <rect x="140" y="215" width="20" height="5" fill="#84cc16"/> <!-- Plate with food -->
+          <path d="M75 210 L85 210" stroke="#fde68a" stroke-width="3" fill="none"/> <!-- Plate with food -->
+          
+          <!-- Ground -->
+          <rect x="30" y="250" width="240" height="5" fill="#94a3b8"/>
+          
+          <!-- Label -->
+          <rect x="70" y="255" width="160" height="40" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="280" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">RESTAURANT</text>
+        </svg>`;
+      
+      case 'park':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Sky background -->
+          <rect x="0" y="0" width="300" height="100" fill="#e0f2fe"/>
+          
+          <!-- Ground/Grass -->
+          <rect x="0" y="100" width="300" height="150" fill="#bbf7d0"/>
+          
+          <!-- Path -->
+          <path d="M50 150 C100 120, 200 180, 250 150" stroke="#d6d3d1" stroke-width="15" fill="none"/>
+          
+          <!-- Pond -->
+          <ellipse cx="90" cy="200" rx="40" ry="20" fill="#7dd3fc"/>
+          
+          <!-- Trees -->
+          <circle cx="50" cy="120" r="20" fill="#16a34a"/>
+          <rect x="46" y="120" width="8" height="25" fill="#854d0e"/>
+          
+          <circle cx="200" cy="130" r="25" fill="#16a34a"/>
+          <rect x="196" y="130" width="8" height="30" fill="#854d0e"/>
+          
+          <circle cx="240" cy="110" r="15" fill="#16a34a"/>
+          <rect x="237" y="110" width="6" height="20" fill="#854d0e"/>
+          
+          <circle cx="160" cy="140" r="18" fill="#16a34a"/>
+          <rect x="157" y="140" width="6" height="25" fill="#854d0e"/>
+          
+          <!-- Bench -->
+          <rect x="130" cy="170" width="40" height="5" fill="#a16207"/>
+          <rect x="135" cy="175" width="5" height="15" fill="#a16207"/>
+          <rect x="160" cy="175" width="5" height="15" fill="#a16207"/>
+          
+          <!-- Playground equipment -->
+          <rect x="220" y="180" width="30" height="20" fill="#f59e0b"/> <!-- Slide -->
+          <path d="M220 180 L250 200" stroke="#ef4444" stroke-width="2"/> <!-- Slide support -->
+          
+          <!-- People -->
+          <circle cx="150" cy="150" r="5" fill="#f472b6"/> <!-- Person -->
+          <circle cx="165" cy="155" r="5" fill="#3b82f6"/> <!-- Person -->
+          <circle cx="190" cy="190" r="5" fill="#f472b6"/> <!-- Person -->
+          <circle cx="210" cy="185" r="5" fill="#3b82f6"/> <!-- Person -->
+          
+          <!-- Label -->
+          <rect x="70" y="240" width="160" height="40" fill="#e0f2fe" rx="5" opacity="0.9"/>
+          <text x="150" y="265" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">PARK</text>
+        </svg>`;
+      
+      case 'government':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Government building -->
+          <rect x="40" y="90" width="220" height="110" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Roof/Dome -->
+          <ellipse cx="150" cy="90" rx="70" ry="30" fill="#cbd5e1" stroke="#64748b" stroke-width="2"/>
+          <path d="M150 60 L150 30" stroke="#64748b" stroke-width="2"/>
+          <circle cx="150" cy="25" r="5" fill="#f8fafc" stroke="#64748b" stroke-width="1"/>
+          
+          <!-- Columns -->
+          <rect x="60" y="90" width="12" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="85" y="90" width="12" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="110" y="90" width="12" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="135" y="90" width="12" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="160" y="90" width="12" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="185" y="90" width="12" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="210" y="90" width="12" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="235" y="90" width="12" height="110" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          
+          <!-- Steps -->
+          <rect x="30" y="200" width="240" height="8" fill="#94a3b8"/>
+          <rect x="40" y="208" width="220" height="8" fill="#94a3b8"/>
+          <rect x="50" y="216" width="200" height="8" fill="#94a3b8"/>
+          
+          <!-- Entrance -->
+          <rect x="135" y="150" width="30" height="50" fill="#475569"/>
+          
+          <!-- Flag -->
+          <line x1="40" y1="60" x2="40" y2="90" stroke="#334155" stroke-width="2"/>
+          <rect x="40" y="60" width="30" height="20" fill="#ef4444"/>
+          
+          <!-- People/Officials -->
+          <circle cx="85" cy="230" r="7" fill="#0369a1"/> <!-- Person in suit -->
+          <rect x="82" y="237" width="6" height="10" fill="#0369a1"/> <!-- Person body -->
+          
+          <circle cx="105" cy="230" r="7" fill="#0369a1"/> <!-- Person in suit -->
+          <rect x="102" y="237" width="6" height="10" fill="#0369a1"/> <!-- Person body -->
+          
+          <circle cx="185" cy="230" r="7" fill="#0369a1"/> <!-- Person in suit -->
+          <rect x="182" y="237" width="6" height="10" fill="#0369a1"/> <!-- Person body -->
+          
+          <!-- Ground -->
+          <rect x="30" y="224" width="240" height="6" fill="#94a3b8"/>
+          
+          <!-- Label -->
+          <rect x="55" y="245" width="190" height="40" fill="#e0f2fe" rx="5" opacity="0.9"/>
+          <text x="150" y="270" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">GOVERNMENT OFFICE</text>
+        </svg>`;
+      
+      case 'transit':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Station building -->
+          <rect x="50" y="80" width="200" height="100" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Roof -->
+          <path d="M30 80 L150 40 L270 80" stroke="#334155" stroke-width="2" fill="#e2e8f0"/>
+          
+          <!-- Clock -->
+          <circle cx="150" cy="60" r="15" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+          <line x1="150" y1="60" x2="150" y2="50" stroke="#334155" stroke-width="2"/> <!-- Hour hand -->
+          <line x1="150" y1="60" x2="160" y2="60" stroke="#334155" stroke-width="2"/> <!-- Minute hand -->
+          
+          <!-- Entrance -->
+          <rect x="125" y="130" width="50" height="50" fill="#475569"/>
+          <line x1="150" y1="130" x2="150" y2="180" stroke="#f8fafc" stroke-width="2"/>
+          
+          <!-- Windows -->
+          <rect x="70" y="100" width="30" height="30" fill="#93c5fd"/>
+          <rect x="200" y="100" width="30" height="30" fill="#93c5fd"/>
+          
+          <!-- Station sign -->
+          <rect x="90" y="60" width="120" height="25" fill="#3b82f6" stroke="#1e40af" stroke-width="1"/>
+          <text x="150" y="77" font-family="Arial" font-size="14" text-anchor="middle" fill="#ffffff" font-weight="bold">TRANSIT STATION</text>
+          
+          <!-- Train/Bus platforms -->
+          <rect x="10" y="180" width="280" height="10" fill="#94a3b8"/>
+          
+          <!-- Train -->
+          <rect x="30" y="160" width="80" height="20" fill="#0ea5e9" stroke="#0369a1" stroke-width="1" rx="5"/>
+          <rect x="40" y="165" width="15" height="10" fill="#bfdbfe"/> <!-- Window -->
+          <rect x="65" y="165" width="15" height="10" fill="#bfdbfe"/> <!-- Window -->
+          <rect x="90" y="165" width="15" height="10" fill="#bfdbfe"/> <!-- Window -->
+          <circle cx="40" cy="180" r="5" fill="#1e293b"/> <!-- Wheel -->
+          <circle cx="100" cy="180" r="5" fill="#1e293b"/> <!-- Wheel -->
+          
+          <!-- Bus -->
+          <rect x="180" y="155" width="60" height="25" fill="#22c55e" stroke="#16a34a" stroke-width="1" rx="3"/>
+          <rect x="185" y="160" width="10" height="10" fill="#bfdbfe"/> <!-- Window -->
+          <rect x="200" y="160" width="10" height="10" fill="#bfdbfe"/> <!-- Window -->
+          <rect x="215" y="160" width="10" height="10" fill="#bfdbfe"/> <!-- Window -->
+          <circle cx="190" cy="180" r="5" fill="#1e293b"/> <!-- Wheel -->
+          <circle cx="230" cy="180" r="5" fill="#1e293b"/> <!-- Wheel -->
+          
+          <!-- People waiting -->
+          <circle cx="135" cy="195" r="5" fill="#f472b6"/> <!-- Person -->
+          <circle cx="150" cy="195" r="5" fill="#3b82f6"/> <!-- Person -->
+          <circle cx="165" cy="195" r="5" fill="#f472b6"/> <!-- Person -->
+          
+          <!-- Label -->
+          <rect x="55" y="220" width="190" height="40" fill="#e0f2fe" rx="5" opacity="0.9"/>
+          <text x="150" y="245" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">TRANSIT STATION</text>
         </svg>`;
 
       case 'near':
