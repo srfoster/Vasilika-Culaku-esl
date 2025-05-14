@@ -356,13 +356,17 @@ const DirectionTermCard = ({ term }: { term: DirectionTerm }) => {
       case 'left':
         return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
           <rect width="300" height="300" fill="#f0f9ff"/>
-          <path d="M180 150 L100 150 L130 120" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Full arrow pointing left -->
+          <path d="M220 150 L100 150" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M130 120 L100 150 L130 180" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           <text x="150" y="200" font-family="Arial" font-size="24" text-anchor="middle" fill="#1e3a8a">LEFT</text>
         </svg>`;
       case 'right':
         return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
           <rect width="300" height="300" fill="#f0f9ff"/>
-          <path d="M120 150 L200 150 L170 120" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Full arrow pointing right -->
+          <path d="M80 150 L200 150" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M170 120 L200 150 L170 180" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           <text x="150" y="200" font-family="Arial" font-size="24" text-anchor="middle" fill="#1e3a8a">RIGHT</text>
         </svg>`;
       case 'straight':
