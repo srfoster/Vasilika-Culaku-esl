@@ -350,12 +350,102 @@ const DirectionsModule = () => {
 
 // Direction Term Card Component
 const DirectionTermCard = ({ term }: { term: DirectionTerm }) => {
+  // Function to render appropriate SVG based on direction term
+  const getDirectionSvg = () => {
+    switch (term.id) {
+      case 'left':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <path d="M180 150 L100 150 L130 120" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="150" y="200" font-family="Arial" font-size="24" text-anchor="middle" fill="#1e3a8a">LEFT</text>
+        </svg>`;
+      case 'right':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <path d="M120 150 L200 150 L170 120" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="150" y="200" font-family="Arial" font-size="24" text-anchor="middle" fill="#1e3a8a">RIGHT</text>
+        </svg>`;
+      case 'straight':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <path d="M150 200 L150 120 L120 150" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M150 120 L180 150" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="150" y="230" font-family="Arial" font-size="24" text-anchor="middle" fill="#1e3a8a">STRAIGHT</text>
+        </svg>`;
+      case 'back':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <path d="M150 120 L150 200 L180 170" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M150 200 L120 170" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="150" y="100" font-family="Arial" font-size="24" text-anchor="middle" fill="#1e3a8a">BACK</text>
+        </svg>`;
+      case 'north':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <circle cx="150" cy="150" r="80" fill="none" stroke="#64748b" stroke-width="2"/>
+          <path d="M150 210 L150 90 L130 120" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M150 90 L170 120" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="150" y="80" font-family="Arial" font-size="20" text-anchor="middle" fill="#1e3a8a">N</text>
+          <text x="150" y="230" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">S</text>
+          <text x="80" y="150" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">W</text>
+          <text x="220" y="150" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">E</text>
+          <rect x="70" y="240" width="160" height="40" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="265" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">NORTH</text>
+        </svg>`;
+      case 'south':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <circle cx="150" cy="150" r="80" fill="none" stroke="#64748b" stroke-width="2"/>
+          <path d="M150 90 L150 210 L130 180" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M150 210 L170 180" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="150" y="80" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">N</text>
+          <text x="150" y="230" font-family="Arial" font-size="20" text-anchor="middle" fill="#1e3a8a">S</text>
+          <text x="80" y="150" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">W</text>
+          <text x="220" y="150" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">E</text>
+          <rect x="70" y="240" width="160" height="40" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="265" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">SOUTH</text>
+        </svg>`;
+      case 'east':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <circle cx="150" cy="150" r="80" fill="none" stroke="#64748b" stroke-width="2"/>
+          <path d="M90 150 L210 150 L180 130" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M210 150 L180 170" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="150" y="80" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">N</text>
+          <text x="150" y="230" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">S</text>
+          <text x="80" y="150" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">W</text>
+          <text x="220" y="150" font-family="Arial" font-size="20" text-anchor="middle" fill="#1e3a8a">E</text>
+          <rect x="70" y="240" width="160" height="40" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="265" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">EAST</text>
+        </svg>`;
+      case 'west':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <circle cx="150" cy="150" r="80" fill="none" stroke="#64748b" stroke-width="2"/>
+          <path d="M210 150 L90 150 L120 130" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M90 150 L120 170" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="150" y="80" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">N</text>
+          <text x="150" y="230" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">S</text>
+          <text x="80" y="150" font-family="Arial" font-size="20" text-anchor="middle" fill="#1e3a8a">W</text>
+          <text x="220" y="150" font-family="Arial" font-size="20" text-anchor="middle" fill="#64748b">E</text>
+          <rect x="70" y="240" width="160" height="40" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="265" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">WEST</text>
+        </svg>`;
+      default:
+        // Use the default template for other terms
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <text x="150" y="150" font-family="Arial" font-size="24" text-anchor="middle" fill="#1e3a8a">${term.term}</text>
+        </svg>`;
+    }
+  };
+
   return (
     <Card className="overflow-hidden hover:shadow-md transition-shadow">
-      <div className="relative h-40 bg-slate-50 overflow-hidden flex items-center justify-center">
+      <div className="relative h-48 bg-slate-50 overflow-hidden flex items-center justify-center">
         <img 
           src={term.imageUrl.startsWith('http') ? term.imageUrl : 
-            `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><text x="150" y="150" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">${term.term}</text></svg>`
+            `data:image/svg+xml;utf8,${encodeURIComponent(getDirectionSvg())}`
           }
           alt={term.term}
           className="w-full h-full object-contain"
@@ -437,12 +527,377 @@ const DirectionTermCard = ({ term }: { term: DirectionTerm }) => {
 
 // Location Card Component
 const LocationCard = ({ location }: { location: LocationType }) => {
+  // Function to render campus SVG for location concepts
+  const getLocationSvg = () => {
+    switch (location.id) {
+      case 'campus':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Sky background -->
+          <rect x="0" y="0" width="300" height="150" fill="#e0f2fe"/>
+          
+          <!-- Ground -->
+          <rect x="0" y="150" width="300" height="150" fill="#d1fae5"/>
+          
+          <!-- Main building -->
+          <rect x="100" y="80" width="100" height="80" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          <rect x="140" y="130" width="20" height="30" fill="#475569"/>
+          <rect x="110" y="95" width="15" height="15" fill="#93c5fd"/>
+          <rect x="135" y="95" width="15" height="15" fill="#93c5fd"/>
+          <rect x="160" y="95" width="15" height="15" fill="#93c5fd"/>
+          <rect x="175" y="95" width="15" height="15" fill="#93c5fd"/>
+          
+          <!-- Left building -->
+          <rect x="40" y="100" width="50" height="60" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          <rect x="45" y="110" width="10" height="10" fill="#93c5fd"/>
+          <rect x="60" y="110" width="10" height="10" fill="#93c5fd"/>
+          <rect x="75" y="110" width="10" height="10" fill="#93c5fd"/>
+          <rect x="60" y="130" width="15" height="30" fill="#475569"/>
+          
+          <!-- Right building -->
+          <rect x="210" y="100" width="50" height="60" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          <rect x="215" y="110" width="10" height="10" fill="#93c5fd"/>
+          <rect x="230" y="110" width="10" height="10" fill="#93c5fd"/>
+          <rect x="245" y="110" width="10" height="10" fill="#93c5fd"/>
+          <rect x="225" y="130" width="15" height="30" fill="#475569"/>
+          
+          <!-- Paths -->
+          <path d="M150 160 L150 200 L100 230" stroke="#94a3b8" stroke-width="4" fill="none"/>
+          <path d="M150 160 L150 200 L200 230" stroke="#94a3b8" stroke-width="4" fill="none"/>
+          <path d="M150 160 L90 160" stroke="#94a3b8" stroke-width="4" fill="none"/>
+          <path d="M150 160 L210 160" stroke="#94a3b8" stroke-width="4" fill="none"/>
+          
+          <!-- Trees -->
+          <circle cx="30" cy="170" r="10" fill="#22c55e"/>
+          <rect x="28" y="170" width="4" height="15" fill="#5b5b1e"/>
+          <circle cx="270" cy="170" r="10" fill="#22c55e"/>
+          <rect x="268" y="170" width="4" height="15" fill="#5b5b1e"/>
+          
+          <!-- Sign -->
+          <rect x="60" y="215" width="180" height="40" fill="#e0f2fe" rx="5" stroke="#334155" stroke-width="2"/>
+          <text x="150" y="240" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">COLLEGE CAMPUS</text>
+        </svg>`;
+
+      case 'grocery-store':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Store building -->
+          <rect x="60" y="80" width="180" height="120" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Entrance -->
+          <rect x="125" y="160" width="50" height="40" fill="#475569"/>
+          <line x1="150" y1="160" x2="150" y2="200" stroke="#f8fafc" stroke-width="2"/>
+          
+          <!-- Store sign -->
+          <rect x="80" y="60" width="140" height="30" fill="#3b82f6" stroke="#1e40af" stroke-width="1"/>
+          <text x="150" y="80" font-family="Arial" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="bold">GROCERY STORE</text>
+          
+          <!-- Shopping cart --> 
+          <circle cx="80" cy="220" r="10" fill="#94a3b8"/>
+          <circle cx="100" cy="220" r="10" fill="#94a3b8"/>
+          <rect x="70" y="190" width="40" height="25" fill="#3b82f6" stroke="#1e40af" stroke-width="1"/>
+          <line x1="70" y1="200" x2="110" y2="200" stroke="#1e40af" stroke-width="1"/>
+          
+          <!-- Groceries -->
+          <circle cx="200" cy="220" r="10" fill="#fde68a"/> <!-- Apple/fruit -->
+          <rect x="180" y="190" width="15" height="20" fill="#84cc16"/> <!-- Lettuce -->
+          <rect x="220" y="190" width="10" height="25" fill="#fef3c7" stroke="#854d0e" stroke-width="1"/> <!-- Bread -->
+          
+          <!-- Ground -->
+          <rect x="30" y="240" width="240" height="10" fill="#94a3b8"/>
+          
+          <!-- Label -->
+          <rect x="70" y="250" width="160" height="40" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="275" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">GROCERY STORE</text>
+        </svg>`;
+
+      case 'pharmacy':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Pharmacy building -->
+          <rect x="75" y="80" width="150" height="120" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Door -->
+          <rect x="125" y="160" width="50" height="40" fill="#475569"/>
+          <line x1="150" y1="160" x2="150" y2="200" stroke="#f8fafc" stroke-width="2"/>
+          
+          <!-- Pharmacy sign -->
+          <rect x="90" y="60" width="120" height="30" fill="#22c55e" stroke="#166534" stroke-width="1"/>
+          <text x="150" y="80" font-family="Arial" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="bold">PHARMACY</text>
+          
+          <!-- Medical cross -->
+          <rect x="210" y="100" width="30" height="80" fill="#ef4444"/>
+          <rect x="185" y="125" width="80" height="30" fill="#ef4444"/>
+          
+          <!-- Medicine bottles -->
+          <rect x="95" y="220" width="15" height="25" fill="#a78bfa" rx="2"/>
+          <rect x="115" y="220" width="15" height="20" fill="#fde68a" rx="2"/>
+          <rect x="135" y="220" width="15" height="22" fill="#a7f3d0" rx="2"/>
+          
+          <!-- Ground -->
+          <rect x="30" y="240" width="240" height="10" fill="#94a3b8"/>
+          
+          <!-- Label -->
+          <rect x="70" y="250" width="160" height="40" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="275" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">PHARMACY</text>
+        </svg>`;
+
+      case 'hospital':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Hospital main building -->
+          <rect x="50" y="70" width="200" height="130" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Hospital windows -->
+          <rect x="70" y="90" width="20" height="20" fill="#93c5fd"/>
+          <rect x="100" y="90" width="20" height="20" fill="#93c5fd"/>
+          <rect x="130" y="90" width="20" height="20" fill="#93c5fd"/>
+          <rect x="160" y="90" width="20" height="20" fill="#93c5fd"/>
+          <rect x="190" y="90" width="20" height="20" fill="#93c5fd"/>
+          
+          <rect x="70" y="120" width="20" height="20" fill="#93c5fd"/>
+          <rect x="100" y="120" width="20" height="20" fill="#93c5fd"/>
+          <rect x="130" y="120" width="20" height="20" fill="#93c5fd"/>
+          <rect x="160" y="120" width="20" height="20" fill="#93c5fd"/>
+          <rect x="190" y="120" width="20" height="20" fill="#93c5fd"/>
+          
+          <rect x="70" y="150" width="20" height="20" fill="#93c5fd"/>
+          <rect x="190" y="150" width="20" height="20" fill="#93c5fd"/>
+          
+          <!-- Entrance -->
+          <rect x="125" y="150" width="50" height="50" fill="#475569"/>
+          <line x1="150" y1="150" x2="150" y2="200" stroke="#f8fafc" stroke-width="2"/>
+          
+          <!-- Hospital sign -->
+          <rect x="90" y="50" width="120" height="30" fill="#ef4444" stroke="#b91c1c" stroke-width="1"/>
+          <text x="150" y="70" font-family="Arial" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="bold">HOSPITAL</text>
+          
+          <!-- Medical cross -->
+          <rect x="140" y="15" width="20" height="40" fill="#ef4444"/>
+          <rect x="130" y="25" width="40" height="20" fill="#ef4444"/>
+          
+          <!-- Ambulance -->
+          <rect x="50" y="220" width="60" height="25" fill="#f8fafc" stroke="#334155" stroke-width="1"/>
+          <rect x="60" y="205" width="40" height="15" fill="#f8fafc" stroke="#334155" stroke-width="1"/>
+          <circle cx="65" cy="245" r="7" fill="#000000"/>
+          <circle cx="95" cy="245" r="7" fill="#000000"/>
+          <rect x="75" y="225" width="15" height="5" fill="#ef4444"/>
+          <path d="M127 220 L113 235 L141 235 Z" fill="#f8fafc" stroke="#334155" stroke-width="1"/>
+          
+          <!-- Ground -->
+          <rect x="30" y="250" width="240" height="5" fill="#94a3b8"/>
+          
+          <!-- Label -->
+          <rect x="70" y="255" width="160" height="40" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="280" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">HOSPITAL</text>
+        </svg>`;
+
+      case 'clinic':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Clinic building -->
+          <rect x="80" y="80" width="140" height="120" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Entrance -->
+          <rect x="125" y="160" width="50" height="40" fill="#475569"/>
+          <line x1="150" y1="160" x2="150" y2="200" stroke="#f8fafc" stroke-width="2"/>
+          
+          <!-- Windows -->
+          <rect x="95" y="100" width="25" height="25" fill="#93c5fd"/>
+          <rect x="135" y="100" width="25" height="25" fill="#93c5fd"/>
+          <rect x="175" y="100" width="25" height="25" fill="#93c5fd"/>
+          
+          <!-- Clinic sign -->
+          <rect x="100" y="60" width="100" height="30" fill="#0ea5e9" stroke="#0369a1" stroke-width="1"/>
+          <text x="150" y="80" font-family="Arial" font-size="14" text-anchor="middle" fill="#ffffff" font-weight="bold">MEDICAL CLINIC</text>
+          
+          <!-- Medical symbol -->
+          <circle cx="230" cy="110" r="20" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/>
+          <path d="M230 95 L230 125 M215 110 L245 110" stroke="#0ea5e9" stroke-width="2"/>
+          
+          <!-- Doctor and patient -->
+          <circle cx="85" cy="225" r="15" fill="#94a3b8"/> <!-- Patient head -->
+          <rect x="80" y="240" width="10" height="15" fill="#94a3b8"/> <!-- Patient body -->
+          
+          <circle cx="115" cy="225" r="15" fill="#0ea5e9"/> <!-- Doctor head -->
+          <rect x="110" y="240" width="10" height="15" fill="#0ea5e9"/> <!-- Doctor body -->
+          <rect x="95" y="245" width="15" height="1" fill="#0ea5e9"/> <!-- Doctor arm -->
+          
+          <!-- Ground -->
+          <rect x="30" y="255" width="240" height="5" fill="#94a3b8"/>
+          
+          <!-- Label -->
+          <rect x="70" y="260" width="160" height="35" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="283" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">MEDICAL CLINIC</text>
+        </svg>`;
+
+      case 'school':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- School building -->
+          <rect x="60" y="90" width="180" height="110" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Roof -->
+          <path d="M50 90 L150 40 L250 90 Z" fill="#cbd5e1" stroke="#64748b" stroke-width="2"/>
+          
+          <!-- Bell tower -->
+          <rect x="135" y="40" width="30" height="30" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          <path d="M135 40 L165 40 L150 25 Z" fill="#cbd5e1" stroke="#64748b" stroke-width="2"/>
+          <circle cx="150" cy="55" r="5" fill="#f59e0b"/> <!-- Bell -->
+          
+          <!-- Windows -->
+          <rect x="80" y="110" width="25" height="25" fill="#93c5fd"/>
+          <rect x="130" y="110" width="25" height="25" fill="#93c5fd"/>
+          <rect x="180" y="110" width="25" height="25" fill="#93c5fd"/>
+          
+          <rect x="80" y="150" width="25" height="25" fill="#93c5fd"/>
+          <rect x="180" y="150" width="25" height="25" fill="#93c5fd"/>
+          
+          <!-- Door -->
+          <rect x="130" y="150" width="40" height="50" fill="#475569"/>
+          <line x1="150" y1="150" x2="150" y2="200" stroke="#f8fafc" stroke-width="2"/>
+          
+          <!-- Steps -->
+          <rect x="120" y="200" width="60" height="5" fill="#94a3b8"/>
+          <rect x="125" y="205" width="50" height="5" fill="#94a3b8"/>
+          <rect x="130" y="210" width="40" height="5" fill="#94a3b8"/>
+          
+          <!-- Flag -->
+          <line x1="230" y1="40" x2="230" y2="90" stroke="#334155" stroke-width="2"/>
+          <rect x="230" y="40" width="30" height="20" fill="#ef4444"/>
+          
+          <!-- School supplies -->
+          <rect x="70" y="225" width="25" height="30" fill="#fde68a" stroke="#ca8a04" stroke-width="1"/> <!-- Book -->
+          <rect x="105" y="225" width="15" height="30" fill="#0ea5e9" stroke="#0369a1" stroke-width="1"/> <!-- Pencil -->
+          <circle cx="200" cy="235" r="15" fill="#f43f5e" stroke="#be123c" stroke-width="1"/> <!-- Ball -->
+          
+          <!-- Ground -->
+          <rect x="30" y="255" width="240" height="5" fill="#94a3b8"/>
+          
+          <!-- Label -->
+          <rect x="70" y="260" width="160" height="35" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="283" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">SCHOOL</text>
+        </svg>`;
+
+      case 'library':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Library building -->
+          <rect x="50" y="80" width="200" height="130" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Columns -->
+          <rect x="70" y="80" width="15" height="130" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="110" y="80" width="15" height="130" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="175" y="80" width="15" height="130" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          <rect x="215" y="80" width="15" height="130" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+          
+          <!-- Steps -->
+          <rect x="40" y="210" width="220" height="10" fill="#cbd5e1"/>
+          <rect x="45" y="220" width="210" height="10" fill="#cbd5e1"/>
+          <rect x="50" y="230" width="200" height="10" fill="#cbd5e1"/>
+          
+          <!-- Entrance -->
+          <rect x="130" y="160" width="40" height="70" fill="#475569"/>
+          <line x1="150" y1="160" x2="150" y2="230" stroke="#f8fafc" stroke-width="2"/>
+          
+          <!-- Roof/Header -->
+          <rect x="45" y="65" width="210" height="25" fill="#0f172a" stroke="#020617" stroke-width="1"/>
+          <text x="150" y="83" font-family="Arial" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="bold">LIBRARY</text>
+          
+          <!-- Books -->
+          <rect x="70" y="245" width="10" height="30" fill="#ef4444" stroke="#b91c1c" stroke-width="1"/>
+          <rect x="80" y="245" width="10" height="30" fill="#84cc16" stroke="#4d7c0f" stroke-width="1"/>
+          <rect x="90" y="245" width="10" height="30" fill="#0ea5e9" stroke="#0369a1" stroke-width="1"/>
+          <rect x="100" y="245" width="10" height="30" fill="#f59e0b" stroke="#b45309" stroke-width="1"/>
+          <rect x="110" y="245" width="10" height="30" fill="#8b5cf6" stroke="#6d28d9" stroke-width="1"/>
+          
+          <!-- Reading glasses -->
+          <circle cx="200" cy="265" r="8" fill="none" stroke="#334155" stroke-width="2"/>
+          <circle cx="225" cy="265" r="8" fill="none" stroke="#334155" stroke-width="2"/>
+          <line x1="208" y1="265" x2="217" y2="265" stroke="#334155" stroke-width="2"/>
+          <line x1="240" y1="265" x2="233" y2="265" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Label -->
+          <rect x="70" y="280" width="160" height="40" fill="#cbd5e1" rx="5" opacity="0.9"/>
+          <text x="150" y="305" font-family="Arial" font-size="18" text-anchor="middle" fill="#0f172a">LIBRARY</text>
+        </svg>`;
+
+      case 'near':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Two buildings close together -->
+          <rect x="100" y="80" width="50" height="120" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          <rect x="170" y="100" width="50" height="100" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Windows and doors -->
+          <rect x="115" y="160" width="20" height="40" fill="#475569"/>
+          <rect x="110" y="100" width="15" height="15" fill="#93c5fd"/>
+          <rect x="130" y="100" width="15" height="15" fill="#93c5fd"/>
+          <rect x="110" y="125" width="15" height="15" fill="#93c5fd"/>
+          <rect x="130" y="125" width="15" height="15" fill="#93c5fd"/>
+          
+          <rect x="185" y="170" width="20" height="30" fill="#475569"/>
+          <rect x="180" y="115" width="12" height="12" fill="#93c5fd"/>
+          <rect x="200" y="115" width="12" height="12" fill="#93c5fd"/>
+          <rect x="180" y="135" width="12" height="12" fill="#93c5fd"/>
+          <rect x="200" y="135" width="12" height="12" fill="#93c5fd"/>
+          
+          <!-- Near indicator -->
+          <path d="M155 130 L165 130" stroke="#3b82f6" stroke-width="6" stroke-linecap="round"/>
+          
+          <!-- Ground -->
+          <rect x="80" y="200" width="160" height="10" fill="#94a3b8"/>
+          
+          <!-- Label -->
+          <rect x="70" y="220" width="160" height="40" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="245" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">NEAR</text>
+        </svg>`;
+
+      case 'far':
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <!-- Two buildings far apart -->
+          <rect x="50" y="100" width="50" height="100" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          <rect x="210" y="120" width="50" height="80" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+          
+          <!-- Windows and doors -->
+          <rect x="65" y="160" width="20" height="40" fill="#475569"/>
+          <rect x="60" y="120" width="12" height="12" fill="#93c5fd"/>
+          <rect x="80" y="120" width="12" height="12" fill="#93c5fd"/>
+          <rect x="60" y="140" width="12" height="12" fill="#93c5fd"/>
+          <rect x="80" y="140" width="12" height="12" fill="#93c5fd"/>
+          
+          <rect x="225" y="170" width="20" height="30" fill="#475569"/>
+          <rect x="220" y="130" width="12" height="12" fill="#93c5fd"/>
+          <rect x="240" y="130" width="12" height="12" fill="#93c5fd"/>
+          <rect x="220" y="150" width="12" height="12" fill="#93c5fd"/>
+          <rect x="240" y="150" width="12" height="12" fill="#93c5fd"/>
+          
+          <!-- Far indicator -->
+          <path d="M110 150 L200 150" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" stroke-dasharray="12,8"/>
+          
+          <!-- Ground -->
+          <rect x="40" y="200" width="220" height="10" fill="#94a3b8"/>
+          
+          <!-- Label -->
+          <rect x="70" y="220" width="160" height="40" fill="#e0f2fe" rx="5"/>
+          <text x="150" y="245" font-family="Arial" font-size="18" text-anchor="middle" fill="#0c4a6e">FAR</text>
+        </svg>`;
+
+      default:
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect width="300" height="300" fill="#f0f9ff"/>
+          <text x="150" y="150" font-family="Arial" font-size="24" text-anchor="middle" fill="#1e3a8a">${location.name}</text>
+        </svg>`;
+    }
+  };
+
   return (
     <Card className="overflow-hidden hover:shadow-md transition-shadow">
-      <div className="relative h-40 bg-slate-50 overflow-hidden flex items-center justify-center">
+      <div className="relative h-48 bg-slate-50 overflow-hidden flex items-center justify-center">
         <img 
           src={location.imageUrl.startsWith('http') ? location.imageUrl : 
-            `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f8f9fa"/><text x="150" y="150" font-family="Arial" font-size="24" text-anchor="middle" fill="%23333">${location.name}</text></svg>`
+            `data:image/svg+xml;utf8,${encodeURIComponent(getLocationSvg())}`
           }
           alt={location.name}
           className="w-full h-full object-contain"
