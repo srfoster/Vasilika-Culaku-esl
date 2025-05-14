@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from 'wouter';
-import { ArrowLeft, Search, X, Volume2 } from 'lucide-react';
+import { ArrowLeft, Search, X, Volume2, MapIcon, MessageSquare } from 'lucide-react';
 import { 
   Tabs, 
   TabsContent, 
@@ -1374,4 +1374,226 @@ const PhraseCard = ({ phrase, color }: { phrase: DirectionPhrase, color: string 
   );
 };
 
-export default DirectionsModule;
+// Component for "Coming Soon" features
+const ComingSoonFeatures = () => {
+  return (
+    <div className="mt-12">
+      <h2 className="text-2xl font-semibold mb-4 text-center">Coming Soon</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Map Reading Feature */}
+        <Card className="border-2 border-dashed border-blue-200 bg-blue-50">
+          <CardHeader>
+            <CardTitle className="flex items-center text-blue-700">
+              <Map className="w-5 h-5 mr-2" /> 
+              Map Reading
+            </CardTitle>
+            <CardDescription>
+              Learn to read and understand maps, including street maps, transit maps, and digital navigation.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="h-40 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 300 300">
+                <rect width="300" height="300" fill="#f0f9ff"/>
+                <rect x="50" y="50" width="200" height="200" fill="#e0f2fe" stroke="#0369a1" stroke-width="2" rx="5"/>
+                
+                {/* Map roads */}
+                <line x1="90" y1="50" x2="90" y2="250" stroke="#94a3b8" stroke-width="6"/>
+                <line x1="150" y1="50" x2="150" y2="250" stroke="#94a3b8" stroke-width="8"/>
+                <line x1="210" y1="50" x2="210" y2="250" stroke="#94a3b8" stroke-width="6"/>
+                
+                <line x1="50" y1="90" x2="250" y2="90" stroke="#94a3b8" stroke-width="6"/>
+                <line x1="50" y1="150" x2="250" y2="150" stroke="#94a3b8" stroke-width="8"/>
+                <line x1="50" y1="210" x2="250" y2="210" stroke="#94a3b8" stroke-width="6"/>
+                
+                {/* Landmarks */}
+                <rect x="100" y="100" width="40" height="40" fill="#fde68a" stroke="#ca8a04" stroke-width="1"/> {/* Building */}
+                <circle cx="210" cy="90" r="15" fill="#86efac" stroke="#22c55e" stroke-width="1"/> {/* Park */}
+                <rect x="60" y="170" width="60" height="30" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1"/> {/* Building */}
+                
+                {/* Location marker */}
+                <circle cx="150" cy="150" r="12" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+                <path d="M150 138 L150 162" stroke="#ffffff" stroke-width="2"/>
+                <path d="M138 150 L162 150" stroke="#ffffff" stroke-width="2"/>
+                
+                {/* Compass */}
+                <circle cx="220" cy="220" r="20" fill="#ffffff" stroke="#334155" stroke-width="1"/>
+                <text x="220" y="215" font-family="Arial" font-size="10" text-anchor="middle" fill="#334155">N</text>
+                <text x="220" y="235" font-family="Arial" font-size="10" text-anchor="middle" fill="#334155">S</text>
+                <text x="205" y="225" font-family="Arial" font-size="10" text-anchor="middle" fill="#334155">W</text>
+                <text x="235" y="225" font-family="Arial" font-size="10" text-anchor="middle" fill="#334155">E</text>
+                <path d="M220 220 L220 205" stroke="#334155" stroke-width="1" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div className="text-center mt-4 text-sm text-blue-600">
+              This feature will help you learn how to read different kinds of maps and find your way around your community.
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Conversation Practice Feature */}
+        <Card className="border-2 border-dashed border-emerald-200 bg-emerald-50">
+          <CardHeader>
+            <CardTitle className="flex items-center text-emerald-700">
+              <MessageSquare className="w-5 h-5 mr-2" /> 
+              Conversation Practice
+            </CardTitle>
+            <CardDescription>
+              Practice real-life conversations about asking for and giving directions through interactive dialogues.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="h-40 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 300 300">
+                <rect width="300" height="300" fill="#f0f9ff"/>
+                
+                {/* Person 1 */}
+                <circle cx="100" cy="150" r="30" fill="#bfdbfe" stroke="#3b82f6" stroke-width="2"/>
+                <circle cx="90" cy="140" r="5" fill="#1e3a8a"/> {/* Eye */}
+                <circle cx="110" cy="140" r="5" fill="#1e3a8a"/> {/* Eye */}
+                <path d="M90 160 Q100 170 110 160" stroke="#1e3a8a" stroke-width="2" fill="none"/> {/* Smile */}
+                
+                {/* Person 2 */}
+                <circle cx="200" cy="150" r="30" fill="#a7f3d0" stroke="#10b981" stroke-width="2"/>
+                <circle cx="190" cy="140" r="5" fill="#064e3b"/> {/* Eye */}
+                <circle cx="210" cy="140" r="5" fill="#064e3b"/> {/* Eye */}
+                <path d="M190 160 Q200 170 210 160" stroke="#064e3b" stroke-width="2" fill="none"/> {/* Smile */}
+                
+                {/* Speech bubbles */}
+                <path d="M130 130 Q150 120 170 130 Q180 135 170 140 Q150 150 130 140 Q120 135 130 130" fill="#ffffff" stroke="#64748b" stroke-width="1"/>
+                <text x="150" y="140" font-family="Arial" font-size="10" text-anchor="middle" fill="#334155">Where is the...?</text>
+                
+                <path d="M130 170 Q150 180 170 170 Q180 165 170 160 Q150 150 130 160 Q120 165 130 170" fill="#ffffff" stroke="#64748b" stroke-width="1"/>
+                <text x="150" y="165" font-family="Arial" font-size="10" text-anchor="middle" fill="#334155">Go straight...</text>
+                
+                {/* Direction arrow */}
+                <path d="M240 150 L270 150" stroke="#3b82f6" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M260 140 L270 150 L260 160" stroke="#3b82f6" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div className="text-center mt-4 text-sm text-emerald-600">
+              You'll be able to practice common conversations about directions through interactive role-playing exercises.
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+// Updated DirectionsModule component to include ComingSoonFeatures
+const DirectionsModuleWithComingSoon = () => {
+  return (
+    <div className="container mx-auto pb-16">
+      <div className="flex flex-col space-y-6 mt-6">
+        <h1 className="text-3xl font-bold text-center">Directions & Transportation</h1>
+        <p className="text-center text-muted-foreground">
+          Learn important vocabulary and phrases to find your way around.
+        </p>
+        
+        {/* Basic Direction Terms */}
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Basic Direction Terms</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {directionTerms
+              .filter(term => term.category === 'basic')
+              .map(term => <DirectionTermCard key={term.id} term={term} />)
+            }
+          </div>
+        </div>
+        
+        {/* Cardinal Directions */}
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Cardinal Directions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {directionTerms
+              .filter(term => term.category === 'cardinal')
+              .map(term => <DirectionTermCard key={term.id} term={term} />)
+            }
+          </div>
+        </div>
+        
+        {/* Location Concepts */}
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Location Concepts</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {directionTerms
+              .filter(term => term.category === 'location')
+              .map(term => <DirectionTermCard key={term.id} term={term} />)
+            }
+          </div>
+        </div>
+        
+        {/* Transportation Terms */}
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Transportation Terms</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {directionTerms
+              .filter(term => term.category === 'transportation')
+              .map(term => <DirectionTermCard key={term.id} term={term} />)
+            }
+          </div>
+        </div>
+        
+        {/* Question Words */}
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Question Words</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {directionTerms
+              .filter(term => term.category === 'question')
+              .map(term => <DirectionTermCard key={term.id} term={term} />)
+            }
+          </div>
+        </div>
+
+        {/* Common Locations */}
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Common Locations</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {locationTypes.map(location => 
+              <LocationCard key={location.id} location={location} />
+            )}
+          </div>
+        </div>
+        
+        {/* Useful Phrases - Asking for Directions */}
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Asking for Directions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {directionPhrases
+              .filter(phrase => phrase.category === 'asking')
+              .map(phrase => <PhraseCard key={phrase.id} phrase={phrase} color="bg-gradient-to-br from-blue-100 to-indigo-50" />)
+            }
+          </div>
+        </div>
+        
+        {/* Useful Phrases - Giving Directions */}
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Giving Directions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {directionPhrases
+              .filter(phrase => phrase.category === 'giving')
+              .map(phrase => <PhraseCard key={phrase.id} phrase={phrase} color="bg-gradient-to-br from-green-100 to-emerald-50" />)
+            }
+          </div>
+        </div>
+        
+        {/* Useful Phrases - Public Transportation */}
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Public Transportation Phrases</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {directionPhrases
+              .filter(phrase => phrase.category === 'public-transit')
+              .map(phrase => <PhraseCard key={phrase.id} phrase={phrase} color="bg-gradient-to-br from-orange-100 to-amber-50" />)
+            }
+          </div>
+        </div>
+
+        {/* Coming Soon Features */}
+        <ComingSoonFeatures />
+      </div>
+    </div>
+  );
+};
+
+export default DirectionsModuleWithComingSoon;

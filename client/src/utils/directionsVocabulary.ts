@@ -276,7 +276,7 @@ export const directionPhrases: DirectionPhrase[] = [
   {
     id: 'where-is',
     phrase: 'Where is the nearest ___?',
-    imageUrl: '/images/phrases/where-is.svg',
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f0f9ff"/><circle cx="120" cy="140" r="30" fill="%23bfdbfe" stroke="%233b82f6" stroke-width="2"/><text x="120" y="145" font-family="Arial" font-size="22" text-anchor="middle" fill="%230c4a6e">?</text><path d="M150 140 L220 140" stroke="%233b82f6" stroke-width="4" fill="none" stroke-dasharray="12,4"/><rect x="220" y="110" width="30" height="60" fill="%23f8fafc" stroke="%23334155" stroke-width="2"/><rect x="225" y="120" width="10" height="10" fill="%2393c5fd"/><rect x="235" y="120" width="10" height="10" fill="%2393c5fd"/><rect x="225" y="140" width="20" height="20" fill="%23475569"/><text x="150" y="80" font-family="Arial" font-size="16" text-anchor="middle" fill="%230c4a6e">Where is the nearest ___?</text><text x="150" y="200" font-family="Arial" font-size="14" text-anchor="middle" fill="%230c4a6e">asking for location</text><circle cx="70" cy="140" r="20" fill="%23f8fafc" stroke="%23334155" stroke-width="1"/><circle cx="70" cy="132" r="5" fill="%23333"/><circle cx="70" cy="148" r="3" fill="%23333"/><path d="M62 140 L78 140" stroke="%23333" stroke-width="1"/></svg>',
     category: 'asking'
   },
   {
