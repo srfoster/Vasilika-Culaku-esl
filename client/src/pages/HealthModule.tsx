@@ -262,73 +262,12 @@ const BodyPartCard = ({ bodyPart }: { bodyPart: BodyPartItem }) => {
         <p className="text-sm text-muted-foreground">{bodyPart.description}</p>
       </CardContent>
       <CardFooter className="p-3 pt-0 flex justify-between">
-        <button 
-          className="bg-accent hover:bg-accent/90 text-white rounded-full flex items-center justify-center p-2 text-sm"
-          onClick={() => {
-            try {
-              // Create simple audio context
-              const context = new (window.AudioContext || (window as any).webkitAudioContext)();
-              
-              // Create oscillator
-              const osc = context.createOscillator();
-              osc.type = 'sine';
-              
-              // Create a basic frequency based on the part name
-              const notes = [
-                392, // G4
-                440, // A4
-                494, // B4
-                523, // C5
-                587, // D5
-                659, // E5
-                698, // F5
-                784  // G5
-              ];
-              
-              // Simple hash for the body part to choose a note
-              let sum = 0;
-              for (let i = 0; i < bodyPart.name.length; i++) {
-                sum += bodyPart.name.charCodeAt(i);
-              }
-              
-              // Pick a note
-              const noteIndex = sum % notes.length;
-              osc.frequency.value = notes[noteIndex];
-              
-              // Connect to output
-              const gainNode = context.createGain();
-              gainNode.gain.value = 0.4;
-              osc.connect(gainNode);
-              gainNode.connect(context.destination);
-              
-              // Play a short tone
-              osc.start();
-              
-              // Stop after 0.7 seconds
-              setTimeout(() => {
-                osc.stop();
-                // Clean up
-                osc.disconnect();
-                gainNode.disconnect();
-              }, 700);
-              
-            } catch (error) {
-              console.error("Audio playback failed:", error);
-              
-              // Fallback - browser beep
-              try {
-                const audio = new Audio("data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU9vT18AAAAA");
-                audio.play();
-              } catch (e) {
-                console.error("Even basic audio failed:", e);
-              }
-            }
-          }}
-          aria-label={`Listen to ${bodyPart.name}`}
-        >
-          <Volume2 className="w-4 h-4 mr-2" />
-          <span>Listen</span>
-        </button>
+        <AudioButton 
+          src={`/${bodyPart.name.toLowerCase()}`} 
+          label="Listen"
+          color="accent"
+          size="sm"
+        />
       </CardFooter>
     </Card>
   );
@@ -352,73 +291,12 @@ const SymptomCard = ({ symptom }: { symptom: SymptomItem }) => {
         <p className="text-sm text-muted-foreground">{symptom.description}</p>
       </CardContent>
       <CardFooter className="p-3 pt-0 flex justify-between">
-        <button 
-          className="bg-accent hover:bg-accent/90 text-white rounded-full flex items-center justify-center p-2 text-sm"
-          onClick={() => {
-            try {
-              // Create simple audio context
-              const context = new (window.AudioContext || (window as any).webkitAudioContext)();
-              
-              // Create oscillator
-              const osc = context.createOscillator();
-              osc.type = 'triangle'; // Different waveform for symptoms
-              
-              // Create a basic frequency based on the symptom name
-              const notes = [
-                349, // F4
-                370, // F#4
-                392, // G4
-                415, // G#4
-                440, // A4
-                466, // A#4
-                494, // B4
-                523  // C5
-              ];
-              
-              // Simple hash for the symptom to choose a note
-              let sum = 0;
-              for (let i = 0; i < symptom.name.length; i++) {
-                sum += symptom.name.charCodeAt(i);
-              }
-              
-              // Pick a note
-              const noteIndex = sum % notes.length;
-              osc.frequency.value = notes[noteIndex];
-              
-              // Connect to output
-              const gainNode = context.createGain();
-              gainNode.gain.value = 0.3;
-              osc.connect(gainNode);
-              gainNode.connect(context.destination);
-              
-              // Play a short tone
-              osc.start();
-              
-              // Stop after 0.7 seconds
-              setTimeout(() => {
-                osc.stop();
-                // Clean up
-                osc.disconnect();
-                gainNode.disconnect();
-              }, 700);
-              
-            } catch (error) {
-              console.error("Audio playback failed:", error);
-              
-              // Fallback - browser beep
-              try {
-                const audio = new Audio("data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU9vT18AAAAA");
-                audio.play();
-              } catch (e) {
-                console.error("Even basic audio failed:", e);
-              }
-            }
-          }}
-          aria-label={`Listen to ${symptom.name}`}
-        >
-          <Volume2 className="w-4 h-4 mr-2" />
-          <span>Listen</span>
-        </button>
+        <AudioButton 
+          src={`/${symptom.name.toLowerCase()}`}
+          label="Listen"
+          color="accent"
+          size="sm"
+        />
       </CardFooter>
     </Card>
   );
