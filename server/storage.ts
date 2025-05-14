@@ -319,7 +319,7 @@ export class MemStorage implements IStorage {
         description: 'Learn health and medical terms',
         progress: 0,
         imageUrl: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
-        status: (alphabetProgress > 50 && numbersProgress > 50 && foodProgress > 50) ? 'in-progress' : 'locked',
+        status: 'in-progress', // Temporarily unlocked for testing
         path: '/health'
       },
       {
@@ -328,7 +328,7 @@ export class MemStorage implements IStorage {
         description: 'Learn how to navigate and ask for directions',
         progress: 0,
         imageUrl: 'https://images.unsplash.com/photo-1569396116180-210c182bedb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300',
-        status: (alphabetProgress > 50 && numbersProgress > 50 && foodProgress > 50) ? 'in-progress' : 'locked',
+        status: 'in-progress', // Temporarily unlocked for testing
         path: '/directions'
       },
       {
