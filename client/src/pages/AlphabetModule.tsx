@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
-import { useQuery, useMutation } from '@tanstack/react-query';
 import { Link } from 'wouter';
 import LetterDisplay from '@/components/LetterDisplay';
 import DrawingCanvas from '@/components/DrawingCanvas';
-import { queryClient } from '@/lib/queryClient';
-import { apiRequest } from '@/lib/queryClient';
 import { alphabet } from '@/utils/alphabet';
+import { storage } from '@/data/storage';
 
 const AlphabetModule = () => {
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
   const [practiceLowercase, setPracticeLowercase] = useState(false);
   
-  // Fetch user's alphabet progress
-  const { data: progress } = useQuery({
-    queryKey: ['/api/progress/alphabet'],
-  });
+  const [alphabetProgress, setAlphabetProgress] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    const progress = storage.getProgress();
+    setAlphabetProgress(progress.alphabet);
+  }, []);
   
   // Get the current letter data
   const currentLetter = alphabet[currentLetterIndex];
