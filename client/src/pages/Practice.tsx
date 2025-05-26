@@ -14,13 +14,12 @@ const Practice = () => {
     setPracticeData(practice);
   }, []);
   
-  // Update practice progress mutation
-    mutationFn: (data: { completed: boolean }) => {
-    },
-    onSuccess: () => {
+  // Update practice progress mutation (local placeholder)
+  const updatePractice = {
+    mutate: (_data: { completed: boolean }) => {
       setPracticeComplete(true);
     },
-  });
+  };
   
   // Handle saving the practice
   const handleSavePractice = (data: string) => {

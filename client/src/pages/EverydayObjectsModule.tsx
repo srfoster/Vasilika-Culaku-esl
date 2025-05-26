@@ -19,33 +19,22 @@ const EverydayObjectsModule = () => {
     setIsLoading(false);
   }, []);
   
-  // Get completed objects status
+  // Get completed objects status (local state)
   const getObjectCompletedStatus = (objectId: string): boolean => {
-    if (!progressData || !progressData.categories) return false;
-    
-    const categories = progressData.categories;
-    for (const categoryKey in categories) {
-      const category = categories[categoryKey];
-      if (category && category.items) {
-        const item = category.items.find((item: any) => item.id === objectId);
-        if (item) {
-          return item.completed;
-        }
-      }
-    }
-    return false;
+    return !!objectProgress[objectId];
   };
   
-  // Update object progress mutation
-    mutationFn: async (objectId: string) => {
-        objectId,
-        completed: true
-      });
+  // Update object progress mutation (local placeholder)
+  const updateProgress = {
+    mutate: (objectId: string) => {
+      setObjectProgress(prev => ({ ...prev, [objectId]: true }));
     },
-    onSuccess: () => {
-      // Invalidate the progress query to refetch the latest data
-    }
-  });
+    mutateAsync: async (objectId: string) => {
+      setObjectProgress(prev => ({ ...prev, [objectId]: true }));
+      return Promise.resolve();
+    },
+    isPending: false
+  };
 
   // Reset selections when going back to categories
   const resetToCategories = () => {

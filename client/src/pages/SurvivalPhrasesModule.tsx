@@ -32,11 +32,8 @@ export default function SurvivalPhrasesModule() {
   const [activeCategory, setActiveCategory] = useState<string>(phraseCategories[0].id);
   const [savedPhrases, setSavedPhrases] = useState<string[]>([]);
   
-  // Get categories from the API
-    queryKey: ['/api/survival-categories'],
-    initialData: phraseCategories,
-    enabled: false // We're using local data for now
-  });
+  // Get categories from the API (local placeholder)
+  const categories = phraseCategories; // Using local data for now
   
   // Get phrases for the selected category (from local data)
   const phrasesForCategory = getPhrasesByCategory(activeCategory);

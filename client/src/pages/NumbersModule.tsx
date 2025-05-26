@@ -7,20 +7,18 @@ import { numbers } from '@/utils/numbers';
 
 const NumbersModule = () => {
   const [currentNumberIndex, setCurrentNumberIndex] = useState(0);
-  
-  // Fetch user's number progress
-    queryKey: ['/api/progress/numbers'],
-  });
+  // Fetch user's number progress (local placeholder)
+  const [numberProgress, setNumberProgress] = useState<Record<number, boolean>>({});
   
   // Get the current number data
   const currentNumber = numbers[currentNumberIndex];
   
-  // Update progress mutation
-    mutationFn: (data: { number: number, completed: boolean }) => {
+  // Update progress mutation (local placeholder)
+  const updateProgress = {
+    mutate: (_data: { number: number, completed: boolean }) => {
+      setNumberProgress(prev => ({ ...prev, [_data.number]: _data.completed }));
     },
-    onSuccess: () => {
-    },
-  });
+  };
   
   // Handle moving to the next number
   const handleNextNumber = () => {

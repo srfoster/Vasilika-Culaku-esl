@@ -21,12 +21,12 @@ const FoodVocabularyModule = () => {
   // Get the current listening exercise
   const currentExercise = listeningExercises[currentExerciseIndex];
   
-  // Update progress mutation
-    mutationFn: (data: { exercise: string, completed: boolean }) => {
+  // Update progress mutation (local placeholder)
+  const updateProgress = {
+    mutate: (_data: { exercise: string, completed: boolean }) => {
+      // Optionally update local state here if needed
     },
-    onSuccess: () => {
-    },
-  });
+  };
   
   // Handle completing the matching exercise
   const handleCompleteMatching = (score: number) => {
