@@ -1,6 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-import { Link } from 'wouter';
-import ProgressBar from '@/components/ProgressBar';
+import ProgressBar from "@/components/ProgressBar";
+import { Link } from "wouter";
+import { useState, useEffect } from "react";
+import { storage, User } from "@/data/storage";
+import { modules } from "@/data/modules";
 
 interface ModuleProgress {
   id: string;
@@ -11,18 +13,37 @@ interface ModuleProgress {
 }
 
 const Progress = () => {
-  // Fetch user data
-  const { data: user } = useQuery({
-    queryKey: ['/api/users/current'],
-  });
-  
-  // Fetch progress data
-  const { data: progress, isLoading: isLoadingProgress } = useQuery({
-    queryKey: ['/api/progress'],
-  });
+  const [user, setUser] = useState<User | null>(null);
+  const [moduleProgress, setModuleProgress] = useState<ModuleProgress[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const userData = storage.getUser();
+    const progressData = storage.getProgress();
+    
+    // Calculate progress for each module
+    const calculatedProgress: ModuleProgress[] = modules.map(module => {
+      const moduleData = progressData[module.id as keyof typeof progressData];
+      const completed = Object.values(moduleData || {}).filter(Boolean).length;
+      const total = Object.keys(moduleData || {}).length || 1;
+      
+      return {
+        id: module.id,
+        title: module.title,
+        progress: Math.round((completed / total) * 100),
+        completedItems: completed,
+        totalItems: total
+      };
+    });
+
+    setUser(userData);
+    setModuleProgress(calculatedProgress);
+    setIsLoading(false);
+  }, []);
   
   const userPoints = user?.points || 0;
   const userName = user?.displayName || 'Student';
+  const overallProgress = user?.progress || 0;
   
   return (
     <div className="progress-screen">
@@ -67,21 +88,21 @@ const Progress = () => {
       <div className="bg-white rounded-xl shadow-md p-6 mb-6">
         <h3 className="text-xl font-bold mb-4">Overall Progress</h3>
         <ProgressBar 
-          progress={user?.progress || 0} 
+          progress={overallProgress} 
           height="h-6"
         />
         
         <div className="mt-4 flex flex-wrap justify-between text-center">
           <div className="p-3">
-            <div className="text-2xl font-bold text-primary">{progress?.completedModules || 0}</div>
+            <div className="text-2xl font-bold text-primary">{moduleProgress.filter(m => m.progress === 100).length}</div>
             <div className="text-sm text-gray-600">Modules<br />Completed</div>
           </div>
           <div className="p-3">
-            <div className="text-2xl font-bold text-secondary">{progress?.completedExercises || 0}</div>
+            <div className="text-2xl font-bold text-secondary">{moduleProgress.reduce((sum, m) => sum + m.completedItems, 0)}</div>
             <div className="text-sm text-gray-600">Exercises<br />Completed</div>
           </div>
           <div className="p-3">
-            <div className="text-2xl font-bold text-accent">{progress?.streak || 0}</div>
+            <div className="text-2xl font-bold text-accent">0</div>
             <div className="text-sm text-gray-600">Day<br />Streak</div>
           </div>
         </div>
@@ -90,7 +111,7 @@ const Progress = () => {
       {/* Module progress */}
       <h3 className="text-xl font-bold mb-4">Module Progress</h3>
       
-      {isLoadingProgress ? (
+      {isLoading ? (
         <div className="space-y-4">
           {[...Array(4)].map((_, index) => (
             <div key={index} className="bg-white rounded-xl shadow-md p-6 animate-pulse">

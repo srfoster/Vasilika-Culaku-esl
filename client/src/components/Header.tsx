@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import { storage, User } from "@/data/storage";
 
 const Header = () => {
-  const { data: user } = useQuery({
-    queryKey: ['/api/users/current'],
-    suspense: false,
-  });
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const userData = storage.getUser();
+    setUser(userData);
+  }, []);
 
   return (
     <header className="bg-white shadow-md">
