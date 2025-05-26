@@ -37,17 +37,13 @@ const EverydayObjectsModule = () => {
   };
   
   // Update object progress mutation
-  const updateProgress = useMutation({
     mutationFn: async (objectId: string) => {
-      return apiRequest('/api/progress/objects', 'POST', {
         objectId,
         completed: true
       });
     },
     onSuccess: () => {
       // Invalidate the progress query to refetch the latest data
-      queryClient.invalidateQueries({ queryKey: ['/api/progress/objects'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/modules'] });
     }
   });
 

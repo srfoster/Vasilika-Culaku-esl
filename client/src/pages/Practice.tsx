@@ -15,13 +15,9 @@ const Practice = () => {
   }, []);
   
   // Update practice progress mutation
-  const updatePractice = useMutation({
     mutationFn: (data: { completed: boolean }) => {
-      return apiRequest('POST', '/api/practice/complete', data);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/practice/daily'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/users/current'] });
       setPracticeComplete(true);
     },
   });

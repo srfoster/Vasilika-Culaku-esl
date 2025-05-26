@@ -9,7 +9,6 @@ const NumbersModule = () => {
   const [currentNumberIndex, setCurrentNumberIndex] = useState(0);
   
   // Fetch user's number progress
-  const { data: progress } = useQuery({
     queryKey: ['/api/progress/numbers'],
   });
   
@@ -17,14 +16,9 @@ const NumbersModule = () => {
   const currentNumber = numbers[currentNumberIndex];
   
   // Update progress mutation
-  const updateProgress = useMutation({
     mutationFn: (data: { number: number, completed: boolean }) => {
-      return apiRequest('POST', '/api/progress/numbers', data);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/progress/numbers'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/users/current'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/modules'] });
     },
   });
   

@@ -33,7 +33,6 @@ export default function SurvivalPhrasesModule() {
   const [savedPhrases, setSavedPhrases] = useState<string[]>([]);
   
   // Get categories from the API
-  const { data: categories, isLoading: categoriesLoading } = useQuery<PhraseCategory[]>({
     queryKey: ['/api/survival-categories'],
     initialData: phraseCategories,
     enabled: false // We're using local data for now

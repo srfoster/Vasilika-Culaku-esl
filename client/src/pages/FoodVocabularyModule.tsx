@@ -22,14 +22,9 @@ const FoodVocabularyModule = () => {
   const currentExercise = listeningExercises[currentExerciseIndex];
   
   // Update progress mutation
-  const updateProgress = useMutation({
     mutationFn: (data: { exercise: string, completed: boolean }) => {
-      return apiRequest('POST', '/api/progress/food', data);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/progress/food'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/users/current'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/modules'] });
     },
   });
   
