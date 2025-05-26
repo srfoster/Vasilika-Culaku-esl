@@ -19,17 +19,11 @@ const AlphabetModule = () => {
   // Get the current letter data
   const currentLetter = alphabet[currentLetterIndex];
   
-  // Update progress mutation
-  const updateProgress = useMutation({
-    mutationFn: (data: { letter: string, completed: boolean }) => {
-      return apiRequest('POST', '/api/progress/alphabet', data);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/progress/alphabet'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/users/current'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/modules'] });
-    },
-  });
+  const updateProgressHandler = (letter: string, completed: boolean) => {
+    storage.updateProgress('alphabet', letter, completed);
+    const progress = storage.getProgress();
+    setAlphabetProgress(progress.alphabet);
+  };
   
   // Handle moving to the next letter
   const handleNextLetter = () => {

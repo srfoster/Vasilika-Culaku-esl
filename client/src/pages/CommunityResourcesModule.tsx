@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { resourceCategories, getResourcesByCategory, ResourceCategory, ResourceItem } from '@/utils/communityResources';
 import AudioButton from '@/components/AudioButton';
-import { useQuery, useMutation } from '@tanstack/react-query';
-import { getQueryFn, apiRequest, queryClient } from '@/lib/queryClient';
+import { storage } from '@/data/storage';
 
 const CommunityResourcesModule = () => {
   const [selectedCategory, setSelectedCategory] = useState<ResourceCategory | null>(null);

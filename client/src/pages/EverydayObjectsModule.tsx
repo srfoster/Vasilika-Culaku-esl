@@ -3,19 +3,21 @@ import { Link } from 'wouter';
 import { objectCategories, getObjectsByCategory, ObjectCategory, ObjectItem } from '@/utils/everydayObjects';
 import AudioButton from '@/components/AudioButton';
 import WordMatchingExercise from '@/components/WordMatchingExercise';
-import { useQuery, useMutation } from '@tanstack/react-query';
-import { getQueryFn, apiRequest, queryClient } from '@/lib/queryClient';
+import { storage } from '@/data/storage';
 
 const EverydayObjectsModule = () => {
   const [selectedCategory, setSelectedCategory] = useState<ObjectCategory | null>(null);
   const [selectedObject, setSelectedObject] = useState<ObjectItem | null>(null);
   const [showExercise, setShowExercise] = useState(false);
   
-  // Fetch objects progress from the backend
-  const { data: progressData, isLoading } = useQuery({
-    queryKey: ['/api/progress/objects'],
-    queryFn: getQueryFn({ on401: 'throw' }),
-  });
+  const [objectProgress, setObjectProgress] = useState<Record<string, boolean>>({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const progress = storage.getProgress();
+    setObjectProgress(progress.objects);
+    setIsLoading(false);
+  }, []);
   
   // Get completed objects status
   const getObjectCompletedStatus = (objectId: string): boolean => {

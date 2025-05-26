@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import DrawingCanvas from '@/components/DrawingCanvas';
 import AudioButton from '@/components/AudioButton';
-import { queryClient } from '@/lib/queryClient';
-import { apiRequest } from '@/lib/queryClient';
+import { storage } from '@/data/storage';
 
 const Practice = () => {
   const [practiceComplete, setPracticeComplete] = useState(false);
   
-  // Fetch daily practice data
-  const { data: practice } = useQuery({
-    queryKey: ['/api/practice/daily'],
-  });
+  const [practiceData, setPracticeData] = useState<any>(null);
+
+  useEffect(() => {
+    const practice = storage.getDailyPractice();
+    setPracticeData(practice);
+  }, []);
   
   // Update practice progress mutation
   const updatePractice = useMutation({
