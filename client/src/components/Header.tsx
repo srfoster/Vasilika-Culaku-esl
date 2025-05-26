@@ -1,5 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
+import { useState, useEffect } from "react";
+import { storage, User } from "@/data/storage";
 
 const Header = () => {
   const { data: user } = useQuery({

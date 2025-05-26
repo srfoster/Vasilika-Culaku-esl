@@ -87,9 +87,9 @@ class ClientStorage {
     return JSON.parse(progressData);
   }
 
-  updateProgress(module: keyof ProgressData, item: string, completed: boolean): void {
+  updateProgress(module: keyof ProgressData, item: string | number, completed: boolean): void {
     const progress = this.getProgress();
-    progress[module][item] = completed;
+    (progress[module] as any)[item] = completed;
     localStorage.setItem(this.progressKey, JSON.stringify(progress));
     
     // Update overall user progress

@@ -105,7 +105,7 @@ const Progress = () => {
         </div>
       ) : (
         <div className="space-y-4">
-          {progress?.modules?.map((module: ModuleProgress) => (
+          {moduleProgress.map((module: ModuleProgress) => (
             <div key={module.id} className="bg-white rounded-xl shadow-md p-6">
               <div className="flex justify-between items-center mb-2">
                 <h4 className="font-bold">{module.title}</h4>

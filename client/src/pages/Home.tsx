@@ -3,7 +3,7 @@ import ProgressBar from "@/components/ProgressBar";
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
 import { storage, User } from "@/data/storage";
-import { modules } from "@/data/modules";
+import { modules, Module } from "@/data/modules";
 
 const Home = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -60,7 +60,7 @@ const Home = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {modules.map((module) => (
+            {modules.map((module: Module) => (
               <ModuleCard key={module.id} module={module} />
             ))}
           </div>

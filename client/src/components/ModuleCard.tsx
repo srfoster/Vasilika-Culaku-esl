@@ -1,15 +1,7 @@
 import { Link } from "wouter";
 import ProgressBar from "./ProgressBar";
 
-export interface Module {
-  id: string;
-  title: string;
-  description: string;
-  progress: number;
-  imageUrl: string;
-  status: 'completed' | 'in-progress' | 'locked';
-  path: string;
-}
+import { Module } from "@/data/modules";
 
 interface ModuleCardProps {
   module: Module;
