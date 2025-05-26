@@ -1,10 +1,8 @@
-import { useState } from 'react';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import WordMatchingExercise from '@/components/WordMatchingExercise';
 import AudioButton from '@/components/AudioButton';
-import { queryClient } from '@/lib/queryClient';
-import { apiRequest } from '@/lib/queryClient';
+import { storage } from '@/data/storage';
 import { foodVocabulary, listeningExercises } from '@/utils/foodVocabulary';
 
 const FoodVocabularyModule = () => {
