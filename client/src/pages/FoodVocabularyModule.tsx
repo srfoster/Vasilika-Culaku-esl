@@ -13,9 +13,12 @@ const FoodVocabularyModule = () => {
   const [showFeedback, setShowFeedback] = useState(false);
   
   // Fetch user's food vocabulary progress
-  const { data: progress } = useQuery({
-    queryKey: ['/api/progress/food'],
-  });
+  const [foodProgress, setFoodProgress] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    const progress = storage.getProgress();
+    setFoodProgress(progress.food);
+  }, []);
   
   // Get the current listening exercise
   const currentExercise = listeningExercises[currentExerciseIndex];

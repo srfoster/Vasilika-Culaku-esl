@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { storage } from '@/data/storage';
 import { useLocation } from 'wouter';
 import { ArrowLeft, Volume2, Bookmark, BookmarkCheck } from 'lucide-react';
 import { 

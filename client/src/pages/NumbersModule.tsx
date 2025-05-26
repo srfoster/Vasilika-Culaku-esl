@@ -1,10 +1,8 @@
-import { useState } from 'react';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import NumberDisplay from '@/components/NumberDisplay';
 import CountingExercise from '@/components/CountingExercise';
-import { queryClient } from '@/lib/queryClient';
-import { apiRequest } from '@/lib/queryClient';
+import { storage } from '@/data/storage';
 import { numbers } from '@/utils/numbers';
 
 const NumbersModule = () => {
