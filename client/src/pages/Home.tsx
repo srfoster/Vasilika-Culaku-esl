@@ -1,18 +1,20 @@
-import { useQuery } from "@tanstack/react-query";
-import ModuleCard, { Module } from "@/components/ModuleCard";
+import ModuleCard from "@/components/ModuleCard";
 import ProgressBar from "@/components/ProgressBar";
 import { Link } from "wouter";
+import { useState, useEffect } from "react";
+import { storage, User } from "@/data/storage";
+import { modules } from "@/data/modules";
 
 const Home = () => {
-  // Fetch user data
-  const { data: user } = useQuery({
-    queryKey: ['/api/users/current'],
-  });
-  
-  // Fetch modules data
-  const { data: modules, isLoading: isLoadingModules } = useQuery({
-    queryKey: ['/api/modules'],
-  });
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Get user data from localStorage
+    const userData = storage.getUser();
+    setUser(userData);
+    setIsLoading(false);
+  }, []);
   
   const userName = user?.displayName || 'Student';
   const userProgress = user?.progress || 0;
@@ -43,7 +45,7 @@ const Home = () => {
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Learning Modules</h2>
         
-        {isLoadingModules ? (
+        {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[...Array(6)].map((_, index) => (
               <div key={index} className="bg-white rounded-xl shadow-md h-64 animate-pulse">
@@ -58,7 +60,7 @@ const Home = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {modules?.map((module: Module) => (
+            {modules.map((module) => (
               <ModuleCard key={module.id} module={module} />
             ))}
           </div>

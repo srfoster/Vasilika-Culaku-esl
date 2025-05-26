@@ -1,9 +1,8 @@
 import { Switch, Route, useLocation } from "wouter";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useState, useEffect } from "react";
+import { initializeApp } from "@/data/storage";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import AlphabetModule from "@/pages/AlphabetModule";
@@ -55,38 +54,16 @@ function App() {
   // Track if the app has initialized
   const [initialized, setInitialized] = useState(false);
   
-  // Simulate an initialization process (loading user data, etc.)
+  // Initialize the app and user data
   useEffect(() => {
-    // Check if the user exists in the backend or create a new user
-    const initializeUser = async () => {
-      try {
-        // Attempt to get current user, if not found create a new one
-        const response = await fetch('/api/users/current', {
-          credentials: 'include',
-        });
-        
-        if (!response.ok) {
-          // Create a default user
-          await fetch('/api/users', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              username: `user_${Math.floor(Math.random() * 10000)}`,
-              displayName: 'Student',
-            }),
-            credentials: 'include',
-          });
-        }
-        
-        setInitialized(true);
-      } catch (error) {
-        console.error("Failed to initialize user:", error);
-        // Still mark as initialized so the app can be used
-        setInitialized(true);
-      }
-    };
-    
-    initializeUser();
+    try {
+      // Initialize user and app data from localStorage
+      initializeApp();
+      setInitialized(true);
+    } catch (error) {
+      console.error("Failed to initialize app:", error);
+      setInitialized(true);
+    }
   }, []);
   
   if (!initialized) {
@@ -101,12 +78,10 @@ function App() {
   }
   
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <TooltipProvider>
+      <Toaster />
+      <Router />
+    </TooltipProvider>
   );
 }
 
