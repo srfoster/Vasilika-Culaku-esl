@@ -22,10 +22,13 @@ import { useHashLocation } from "@/hooks/useHashLocation";
 
 function Router() {
   const [location] = useLocation();
-  
+
+  // Helper to get the correct home path for hash routing
+  const homePath = "#/";
+
   // Track if we're on the home page to adjust header styling
   const isHomePage = location === "/";
-  
+
   return (
     <div className="min-h-screen flex flex-col bg-light">
       <Header />
@@ -46,7 +49,7 @@ function Router() {
           <Route component={NotFound} />
         </Switch>
       </main>
-      <BottomNavigation currentPath={location} />
+      <BottomNavigation currentPath={location} homePath={homePath} />
     </div>
   );
 }
@@ -54,7 +57,7 @@ function Router() {
 function App() {
   // Track if the app has initialized
   const [initialized, setInitialized] = useState(false);
-  
+
   // Initialize the app and user data
   useEffect(() => {
     try {
@@ -66,7 +69,7 @@ function App() {
       setInitialized(true);
     }
   }, []);
-  
+
   if (!initialized) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-light">
@@ -77,7 +80,7 @@ function App() {
       </div>
     );
   }
-  
+
   return (
     <TooltipProvider>
       <Toaster />
