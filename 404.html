@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=./index.html" />
+    <script>
+      // For client-side routers (like wouter, react-router, etc.)
+      // This will preserve the path after redirecting to index.html
+      var l = window.location;
+      var path = l.pathname.replace(/^\/Vasilika-Culaku-esl/, '');
+      window.location.replace('/Vasilika-Culaku-esl/index.html' + (path ? ('#' + path) : '') + l.search + l.hash);
+    </script>
+  </head>
+  <body></body>
+</html>
