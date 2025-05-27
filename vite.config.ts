@@ -23,9 +23,10 @@ export default defineConfig({
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },
-  root: path.resolve(import.meta.dirname, "client"),
+  root: path.resolve(import.meta.dirname, "client"), // Restore this line so Vite finds index.html in client/
+  base: "/Vasilika-Culaku-esl/", // Set base for correct asset paths on GitHub Pages
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: path.resolve(import.meta.dirname, "../dist"), // Output to root-level dist
     emptyOutDir: true,
   },
 });

@@ -1,4 +1,4 @@
-import { Switch, Route, useLocation } from "wouter";
+import { Switch, Route, useLocation, Router as WouterRouter } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useState, useEffect } from "react";
@@ -18,6 +18,7 @@ import Practice from "@/pages/Practice";
 import Progress from "@/pages/Progress";
 import Header from "@/components/Header";
 import BottomNavigation from "@/components/BottomNavigation";
+import { useHashLocation } from "@/hooks/useHashLocation";
 
 function Router() {
   const [location] = useLocation();
@@ -80,7 +81,9 @@ function App() {
   return (
     <TooltipProvider>
       <Toaster />
-      <Router />
+      <WouterRouter hook={useHashLocation}>
+        <Router />
+      </WouterRouter>
     </TooltipProvider>
   );
 }
